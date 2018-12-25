@@ -1,0 +1,38 @@
+<template>
+    <div class="sec">
+        <div class="content">
+            <p>Copyright&copy;湖南驱风者影视文化传媒有限公司</p>
+            <p class="tac">湘ICP证C3-09909888号</p>
+            <p class="tar beiHao">湘公网安备 3204224238492829385号</p>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "footer-bar"
+    }
+</script>
+
+<style lang="less" scoped>
+@import "../less/common.less";
+
+    .sec{
+        background: @bg-black;
+        .content{
+            height:100px;
+            line-height: 100px;
+            color: @c-6E;
+            font-size:18px;
+            p{
+                float: left;
+                width: 33.33%;
+            }
+            .beiHao{
+                padding-left:20px;
+                /*background: url("");*/
+            }
+        }
+    }
+
+</style>

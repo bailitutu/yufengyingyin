@@ -5,12 +5,12 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import store from './store'
+import './css/style.css'
 
-
+import 'lib-flexible/flexible'
 Vue.use(Vuex);
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   store,

@@ -20,7 +20,7 @@ new Vue({
   watch: {
     $route: {
       handler: function(val, oldVal){
-        console.log(val);
+        // console.log(val);
       },
     }
   },

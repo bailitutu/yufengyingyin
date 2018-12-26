@@ -1,15 +1,132 @@
 <template>
     <div>
         <div class="sec banner-sec">
-            <div class="content banner-content">
+            <div class="img_item">
+                <img src="../../assets/1.png" class="w-f h-f" alt="">
+            </div>
+            <div class="content banner-content bg-white">
                 <p class="fl">400-9807-8888</p>
-                <button class="more_btn fr">MORE>></button>
+                <button class="more_btn fr bg-white">MORE>></button>
             </div>
         </div>
         <div class="sec bg-white">
-            <div class="content">
+            <div class="content culture_con">
+                <div class="culture_title tac">
+                    <h1>驭风者文化</h1>
+                    <p>QU FEN ZHE CULTURE</p>
+                </div>
+                <ul class="culture_list">
+                    <li>
+                        <img src="../../assets/2.png" class="w-f h-f" alt="">
+                        <div class="culture_cell bg-black c-white">
+                            <h4>使命</h4>
+                            <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../../assets/3.png" class="w-f h-f"  alt="">
+                        <div class="culture_cell bg-black c-white">
+                            <h4>使命</h4>
+                            <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="../../assets/4.png" class="w-f h-f"  alt="">
+                        <div class="culture_cell bg-black c-white">
+                            <h4>使命</h4>
+                            <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+        <div class="sec bg-black">
+            <div class="content new_content">
+                <div class="more_item">
+                    <button class="more_btn bg-black">MORE>></button>
+                </div>
+                <div class="video_item">
 
+                </div>
+                <div class="news_item">
+                    <div class="news_title c-white">
+                        <h1>新闻中心</h1>
+                        <p>News Center</p>
+                    </div>
+                    <ul class="news_list">
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                        <li class="c-white">
+                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
+                            <span >2018-12-06</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="sec bg-white">
+            <div class="content works_content">
+                <div class="works_title">
+                    <button class="more_work bg-black c-white">READ MORE</button>
+                </div>
+                <ul class="works_list">
+                    <li>
+                        <div class="work_cell">
+                            <img src="../../assets/2.png" class="" alt="">
+                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
+                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="work_cell">
+                            <img src="../../assets/2.png" class="" alt="">
+                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
+                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="work_cell">
+                            <img src="../../assets/2.png" class="" alt="">
+                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
+                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="work_cell">
+                            <img src="../../assets/2.png" class="" alt="">
+                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
+                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
@@ -38,9 +155,11 @@
 <style lang="less" scoped>
     @import "../../less/common.less";
     .banner-sec{
-        background: url("../../assets/1.png") no-repeat center;
-        background-size: cover;
-        min-height:960px;
+        width: 100%;
+        .img_item{
+            height:100%;
+            width: 100%;
+        }
         .banner-content{
             position: absolute;
             bottom:0;
@@ -50,7 +169,6 @@
             line-height: 54px;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
-            background: @c-white;
             overflow: hidden;
             font-size:20px;
             color: @c-43;
@@ -61,9 +179,297 @@
             }
             .more_btn{
                 padding:0 10px;
-                background: @c-white;
             }
         }
+    }
+
+    .culture_con{
+        height:480px;
+        .culture_title{
+            color: @c-28;
+            h1{
+                font-size:40px;
+            }
+            p{
+                font-size:18px;
+            }
+        }
+        .culture_list{
+            margin-top: 65px;
+            font-size:0;
+            li:first-child{
+                margin-left:30px;
+            }
+            li{
+                position: relative;
+                width: 390px;
+                height: 270px;
+                display: inline-block;
+                margin-left:16px;
+                overflow: hidden;
+                .culture_cell{
+                    position: absolute;
+                    bottom:0;
+                    left:0;
+                    right:0;
+                    z-index: 1;
+                    height:108px;
+                    width: 100%;
+                    overflow: hidden;
+                    h4{
+                        font-size:22px;
+                        display: inline-block;
+                        border-bottom: 1px solid @c-white;
+                        line-height: 44px;
+                        margin-left: 8px;
+                    }
+                    >div{
+                        font-size:14px;
+                        margin-left: 8px;
+                        line-height: 20px;
+                        height: 40px;
+                        margin-top: 12px;
+                    }
+                }
+            }
+        }
+    }
+
+    .new_content{
+        height:550px;
+        position: relative;
+        .more_item{
+            height:65px;
+            padding:20px 0;
+            text-align: right;
+            .more_btn{
+                height:25px;
+                color: @c-white;
+                margin-right:50px;
+                font-size:18px;
+            }
+        }
+        .video_item{
+            width: 650px;
+            height: 650px;
+            background: red;
+            position: absolute;
+            top: 97px;
+            left: 0px;
+            z-index: 10;
+        }
+        .news_item{
+            float: right;
+            height:420px;
+            width:500px;
+            margin-top: 32px;
+            overflow: hidden;
+            margin-right: 40px;
+            .news_title{
+                h1{
+                    font-size:28px;
+                    line-height: 30px;
+                }
+                p{
+                    font-size:18px;
+                }
+            }
+            .news_list{
+                width: 100%;
+                margin-top: 18px;
+                li{
+                    width: 100%;
+                    overflow: hidden;
+                    height:44px;
+                    line-height: 44px;
+                    font-size:18px;
+                    .news_info{
+                        width:380px;
+                        display: inline-block;
+                    }
+                    span{
+                        width: 100px;
+                        float: right;
+                        display: inline-block;
+                        font-size:18px;
+                    }
+                }
+            }
+
+        }
+    }
+    .works_content{
+        padding-top:200px;
+        padding-bottom:40px;
+        position: relative;
+        .works_title{
+            width:426px;
+            height: 243px;
+            position: absolute;
+            top:200px;
+            right:50px;
+            z-index: 1;
+            background: url('../../assets/works_title_bg.png') no-repeat center;
+            background-size:426px 243px;
+            .more_work{
+                height:60px;
+                width:200px;
+                position: absolute;
+                font-size:18px;
+                bottom:30px;
+                left:53px;
+                z-index: 10;
+            }
+        }
+        .works_list{
+            width: 100%;
+            overflow: hidden;
+            li{
+                width: 600px;
+                height:450px;
+                /*background: orange;*/
+                float: left;
+                text-align: center;
+                position: relative;
+                padding:30px 0 0 ;
+                .work_cell{
+                    height:420px;
+                    width: 450px;
+                    margin:0 auto;
+                    position: relative;
+                    z-index: 10;
+                    img{
+                        width: 450px;
+                        height: 300px;
+                    }
+                    h4{
+                        height:40px;
+                        line-height: 40px;
+                        width: 450px;
+                        font-size:20px;
+                    }
+                    p{
+                        height:40px;
+                        line-height: 40px;
+                        width: 450px;
+                        font-size:18px;
+                    }
+                }
+            }
+            li:nth-of-type(1){
+                margin-top: 60px;
+                .work_cell:before{
+                    content:'YOU';
+                    word-break: break-all;
+                    white-space: normal;
+                    position: absolute;
+                    left:-50px;
+                    color: #D8D8D8;
+                    font-size:102px;
+                    top:-60px;
+                    z-index: 1;
+                    opacity: 0.3;
+                }
+                .work_cell:after{
+                    content:'TYPESOMETHING';
+                    width:10px;
+                    height:auto;
+                    word-break: break-all;
+                    white-space: normal;
+                    position: absolute;
+                    right:-20px;
+                    color: #D8D8D8;
+                    font-size:12px;
+                    top:0;
+                    z-index: 1;
+                }
+            }
+            li:nth-of-type(2){
+                margin-top: 300px;
+                margin-left: 20px;
+                .work_cell:before{
+                    content:'SATISFIED';
+                    white-space: nowrap;
+                    position: absolute;
+                    right:-50px;
+                    color: #D8D8D8;
+                    font-size:102px;
+                    top:100px;
+                    z-index: 1;
+                    opacity: 0.3;
+                }
+                .work_cell:after{
+                    content:'TYPESOMETHING';
+                    width:10px;
+                    height:auto;
+                    word-break: break-all;
+                    white-space: normal;
+                    position: absolute;
+                    left:-20px;
+                    color: #D8D8D8;
+                    font-size:12px;
+                    top:0;
+                    z-index: 1;
+                }
+            }
+            li:nth-of-type(3){
+                margin-top: -160px;
+                .work_cell:before{
+                    content:'WO';
+                    word-break: break-all;
+                    white-space: normal;
+                    position: absolute;
+                    left:-50px;
+                    color: #D8D8D8;
+                    font-size:102px;
+                    top:100px;
+                    z-index: 1;
+                    opacity: 0.3;
+                }
+                .work_cell:after{
+                    content:'TYPESOMETHING';
+                    width:10px;
+                    height:auto;
+                    word-break: break-all;
+                    white-space: normal;
+                    position: absolute;
+                    right:-20px;
+                    color: #D8D8D8;
+                    font-size:12px;
+                    top:0;
+                    z-index: 1;
+                }
+            }
+            li:nth-of-type(4){
+                margin-top: 60px;
+                margin-left: 20px;
+                .work_cell:before{
+                    content:'APPROVAL';
+                    white-space: nowrap;
+                    position: absolute;
+                    left:-50px;
+                    color: #D8D8D8;
+                    font-size:102px;
+                    top:100px;
+                    z-index: 1;
+                    opacity: 0.3;
+                }
+                .work_cell:after{
+                    content:'TYPESOMETHING';
+                    width:10px;
+                    height:auto;
+                    word-break: break-all;
+                    white-space: normal;
+                    position: absolute;
+                    left:-20px;
+                    color: #D8D8D8;
+                    font-size:12px;
+                    top:0;
+                    z-index: 1;
+                }
+            }
+        }
+
     }
     .contact_sec{
         background: @bg-black;

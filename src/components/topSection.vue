@@ -1,0 +1,147 @@
+<template>
+    <div>
+        <div class="sec bg-black">
+            <div class="content title_content ">
+                <p class="bg_words">{{pageData.bg_words}}</p>
+                <div class="title_words">
+                    <h1 class="c-white">{{pageData.title_words}}</h1>
+                    <div class="c-white two_row">{{pageData.title_info}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="sec bg-white page_sec">
+            <div class="content page_info">
+                <p class="page_position c-6E" v-if=" pageData.page_url">当前位置> {{ pageData.page_url.join('>')}}</p>
+                <div class="page_section" v-if="pageSecList.length > 0">
+                    <ul>
+                        <li @click.stop="checkSec(item)" :class="item.active ? 'active': ''"
+                            v-for="(item,index) in pageSecList" :key="index">
+                            <img :src="item.active ? item.act_img : item.nor_img" alt="">
+                            <span>{{item.title}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "top-section",
+        props: ['pageData'],
+        data() {
+            return {
+                pageSecList: []
+            }
+        },
+        created() {
+            if (this.pageData.page_sec && this.pageData.page_sec.length > 0) {
+                let arr = this.pageData.page_sec;
+                this.pageSecList = arr.map((cell, ind) => {
+                    if (ind == 0) {
+                        cell.active = true
+                    } else {
+                        cell.active = false;
+                    }
+                    return cell;
+                })
+            }
+        },
+        methods: {
+            // 切换子页面版块
+            checkSec(item) {
+                this.$router.push({path: item.routerUrl});
+                this.pageSecList = this.pageSecList.map((cell) => {
+                    if (cell.title == item.title) {
+                        cell.active = true;
+                    }else{
+                        cell.active = false;
+                    }
+                    return cell
+                })
+            }
+        }
+    }
+</script>
+
+<style lang="less" scoped>
+    @import "../less/common.less";
+
+    .title_content {
+        height: 500px;
+        .bg_words {
+            height: 200px;
+            font-size: 188px;
+            color: #434343;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            z-index: 1;
+            margin-top: -100px;
+            line-height: 200px;
+            letter-spacing: 60px;
+        }
+        .title_words {
+            padding-top: 250px;
+            position: relative;
+            z-index: 10;
+            h1 {
+                font-size: 44px;
+            }
+            div {
+                font-size: 18px;
+                margin-top: 10px;
+                line-height: 44px;
+            }
+        }
+
+    }
+
+    .page_sec {
+        border-bottom: 1px solid #d8d8d8;
+        .page_info {
+            height: 80px;
+            .page_position {
+                font-size: 16px;
+                height: 80px;
+                line-height: 80px;
+                cursor: default;
+                display: inline-block;
+            }
+            .page_section {
+                float: right;
+                height: 80px;
+                ul {
+                    font-size: 0;
+                    padding: 10px 10px 0;
+                    li {
+                        display: inline-block;
+                        font-size: 18px;
+                        color: @c-6E;
+                        height: 70px;
+                        line-height: 70px;
+                        cursor: pointer;
+                        margin-left: 85px;
+                        padding: 0 4px;
+                        &.active {
+                            color: @c-active;
+                            border-bottom: 4px solid @c-active;
+                        }
+                        img {
+                            width: 24px;
+                            height: auto;
+                            vertical-align: middle;
+                        }
+                        span {
+                            margin-left: 6px;
+                            vertical-align: middle;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+</style>
+

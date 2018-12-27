@@ -1,24 +1,25 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="宣发体系"></section-title>
-            <three-card></three-card>
+            <section-title text="网络大电影"></section-title>
+            <works-list></works-list>
         </div>
     </div>
 </template>
 
 <script>
-    import threeCard from '../../components/threeCard'
     import sectionTitle from '@/components/sectionTitle.vue'
+    import worksList from '@/components/worksList.vue'
 
     export default {
-        name: "about-dec",
+        name: "internet-works",
         components: {
-            threeCard,
-            sectionTitle
+            sectionTitle,
+            worksList
         },
     }
 </script>
+
 
 <style lang="less" scoped>
     @import "../../less/common.less";

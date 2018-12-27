@@ -1,7 +1,7 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="宣发体系"></section-title>
+            <section-title text="最新动态"></section-title>
             <three-card></three-card>
         </div>
     </div>
@@ -10,9 +10,8 @@
 <script>
     import threeCard from '../../components/threeCard'
     import sectionTitle from '@/components/sectionTitle.vue'
-
     export default {
-        name: "about-dec",
+        name: "recent-news",
         components: {
             threeCard,
             sectionTitle

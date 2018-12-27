@@ -1,20 +1,19 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="宣发体系"></section-title>
-            <three-card></three-card>
+            <section-title text="彩蛋花絮"></section-title>
+            <three-col></three-col>
         </div>
     </div>
 </template>
 
 <script>
-    import threeCard from '../../components/threeCard'
+    import threeCol from '../../components/threeCol'
     import sectionTitle from '@/components/sectionTitle.vue'
-
     export default {
-        name: "about-dec",
+        name: "feature",
         components: {
-            threeCard,
+            threeCol,
             sectionTitle
         },
     }
@@ -24,6 +23,6 @@
     @import "../../less/common.less";
     .content {
         min-height: 500px;
-        padding: 48px 0;
+        padding: 48px 0 40px;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <header class="sec" :class=" showActive ? 'active':''">
+    <header class="sec" :class=" showActive ? 'active': ''">
         <div class="content">
             <img src="../assets/logo.png" class="logo fl" alt="">
 
@@ -68,20 +68,20 @@
         created() {
             var that = this;
             window.onscroll = function () {
-                var dTop = document.documentElement.scrollTop;
+                var dTop = document.documentElement.scrollTop || document.body.scrollTop;
                 if (dTop > 0) {
                     that.showActive = true;
                 } else {
                     that.showActive = false;
                 }
             }
-            },
-        watch:{
-          '$route':{
-              handler:(to)=>{
-                  console.log(to.matched)
-              }
-          }
+        },
+        watch: {
+            '$route': {
+                handler: (to) => {
+                    console.log(to.matched)
+                }
+            }
         },
         methods: {
             changeRouter(item) {
@@ -113,7 +113,7 @@
         overflow: hidden;
         transition: all 400ms ease;
         &.active {
-            background: #000;
+            background-color: #000000;
         }
         .content {
             height: 120px;

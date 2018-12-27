@@ -22,7 +22,23 @@
                 <ul class="actor_work_list">
                     <li>
                         <img src="../../assets/2.png" alt="">
-                        <p class="tac c-28">《大汉天子2》</p>
+                        <p class="tac c-28 one_raw">《大汉天子2》</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/2.png" alt="">
+                        <p class="tac c-28 one_raw">《大汉天子2》</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/2.png" alt="">
+                        <p class="tac c-28 one_raw">《大汉天子2》</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/2.png" alt="">
+                        <p class="tac c-28 one_raw">《大汉天子2》</p>
+                    </li>
+                    <li>
+                        <img src="../../assets/2.png" alt="">
+                        <p class="tac c-28 one_raw">《大汉天子2》</p>
                     </li>
                 </ul>
             </div>
@@ -107,7 +123,6 @@
         .actor_works{
             margin-top: 40px;
             width: 100%;
-            background: orange;
             >p{
                 font-size:24px;
             }
@@ -120,7 +135,15 @@
                     width:200px;
                     margin-right:20px;
                     height:auto;
-
+                    img{
+                        width: 200px;
+                        height: 300px;
+                        display: block;
+                    }
+                    p{
+                        font-size:20px;
+                        margin: 28px 0 20px;
+                    }
                 }
             }
         }

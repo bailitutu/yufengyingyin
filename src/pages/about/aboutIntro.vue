@@ -1,23 +1,314 @@
 <template>
-    <div class="sec">
-        <div class="content" style="min-height:600px;">
-            <div class="title c-28">企业简介</div>
+    <div>
+        <div class="sec bg-white">
+            <div class="content">
+                <section-title text="企业简介"></section-title>
+                <div class="intro_item">
+                    <div class="intro_left fl">
+                        <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
+                            者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
+                        <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
+                            者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
+                        <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
+                            者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
+                    </div>
+                    <div class="intro_right fl">
+                        <img src="../../assets/1.png" class="w-f h-f" alt="">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="sec bg-black">
+            <div class="content dev_content">
+                <h1 class="dev_title tac c-active">发展历程</h1>
+
+                <div class="dev_section" v-if="devList.length > 0">
+                    <i class="line"></i>
+                    <span class="pre_btn" @click.stop="handlerClick(1)"></span>
+                    <span class="next_btn" @click.stop="handlerClick(2)"></span>
+                    <div class="dev_list_box">
+                        <ul class="dev_list" ref="swiperList" :style="{ left: swiperLeft + 'px'}">
+                            <li v-for="(item,index) in devList" :key="index">
+                                <p class="time tac">{{item.year}}</p>
+                                <span class="dot"></span>
+                                <div class="words">{{item.content}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+    import sectionTitle from '@/components/sectionTitle.vue'
+
     export default {
-        name: "about-intro"
+        name: "about-intro",
+        components: {
+            sectionTitle,
+        },
+        data() {
+            return {
+                devList: [
+                    {
+                        year: '2014',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                    {
+                        year: '2014',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                    {
+                        year: '2014',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+
+                    {
+                        year: '2014',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                    {
+                        year: '2015',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                    {
+                        year: '2016',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                    {
+                        year: '2017',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                    {
+                        year: '2018',
+                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
+                    },
+                ],
+                itemWitch: 0,
+                swiperLeft: 0,
+                lastIndex: 0, //最前面的下标
+                isGoing: false,//是否正在过渡
+            }
+
+        },
+        mounted() {
+            console.log(this.$refs)
+            this.itemWitch = this.$refs.swiperList.offsetWidth / this.devList.length;
+        },
+        methods: {
+
+            handlerClick(type) {
+                if (this.isGoing || this.devList.length <= 4) {
+                    return;
+                }
+                if (type == 1) { //点击前一个按钮，下标减小
+                    if (this.lastIndex == 0 ) { //已经是第一个了
+                        return;
+                    }
+                    this.lastIndex = this.lastIndex - 1;
+                } else { //点击后一个按钮，下标增大
+                    if ( this.lastIndex == this.devList.length -4 ) { //已经是最后一个了或者没有下一个了
+                        return;
+                    }
+                    this.lastIndex = this.lastIndex + 1;
+                }
+
+                this.changeItem();
+            },
+
+            // 切换
+            changeItem() {
+                this.swiperLeft = this.lastIndex * -this.itemWitch;
+                this.isGoing = true;
+                setTimeout(() => {
+                    this.isGoing = false
+                }, 600)
+            }
+        }
     }
 </script>
 
 <style lang="less" scoped>
     @import "../../less/common";
-    .sec{
-        .content{
-            >.title{
-                font-size:30px;
+
+    .sec {
+        .content {
+            padding: 45px 0;
+            .intro_item {
+                margin-top: 40px;
+                margin-bottom: 20px;
+                overflow: hidden;
+                width: 100%;
+                .intro_left {
+                    width: 770px;
+                    p {
+                        font-size: 18px;
+                        color: @c-28;
+                        text-indent: 2em;
+                        white-space: normal;
+                        line-height: 32px;
+                    }
+                }
+                .intro_right {
+                    width: 450px;
+                    height: 450px;
+                    margin-left: 36px;
+                }
+            }
+
+        }
+    }
+
+    .dev_content {
+        padding: 120px 0;
+        .dev_title {
+            font-size: 30px;
+        }
+        .dev_section {
+            margin-top: 60px;
+            padding: 0 140px;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            .line {
+                height: 2px;
+                width: 100%;
+                background: @c-6E;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 1;
+            }
+            span.pre_btn {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 50px;
+                left: 2px;
+                z-index: 11;
+                background: @c-white;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                -webkit-box-shadow: 0 0 2px 2px 0 @c-white;
+                -moz-box-shadow: 0 0 2px 2px @c-white;
+                box-shadow: 0 0 2px 2px @c-white;
+                &:after {
+                    content: '';
+                    width: 14px;
+                    height: 14px;
+                    border-top: 4px solid #434343;
+                    border-left: 4px solid #434343;
+                    border-right: 2px solid @c-white;
+                    border-bottom: 2px solid @c-white;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    border-radius: 4px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: rotateZ(-45deg);
+                    margin-top: -8px;
+                    margin-left: -4px;
+                }
+            }
+            span.next_btn {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: 50px;
+                right: 2px;
+                z-index: 11;
+                background: @c-white;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                -webkit-box-shadow: 0 0 2px 2px 0 @c-white;
+                -moz-box-shadow: 0 0 2px 2px @c-white;
+                box-shadow: 0 0 2px 2px @c-white;
+                &:after {
+                    content: '';
+                    width: 14px;
+                    height: 14px;
+                    border-top: 4px solid #434343;
+                    border-right: 4px solid #434343;
+                    border-left: 2px solid @c-white;
+                    border-bottom: 2px solid @c-white;
+                    -webkit-border-radius: 4px;
+                    -moz-border-radius: 4px;
+                    border-radius: 4px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: rotateZ(45deg);
+                    margin-top: -8px;
+                    margin-left: -14px;
+                }
+            }
+            .dev_list_box {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                position: relative;
+            }
+            .dev_list {
+                width: auto;
+                height: 100%;
+                font-size: 0;
+                white-space: nowrap;
+                transition: left 600ms ease;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 10;
+                color: @c-white;
+                clear: both;
+                li {
+                    width: 200px;
+                    height: 360px;
+                    display: inline-block;
+                    margin-right: 60px;
+                    text-align: center;
+                    p.time {
+                        font-size: 24px;
+                        width: 200px;
+                    }
+
+                    span.dot {
+                        margin-top: 25px;
+                        display: inline-block;
+                        width: 30px;
+                        height: 30px;
+                        background: @c-active;
+                        -webkit-box-shadow: 0 0 6px 2px 0 @c-active;
+                        -moz-box-shadow: 0 0 6px 2px @c-active;
+                        box-shadow: 0 0 6px 2px @c-active;
+                        border: 10px solid #fff;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        border-radius: 50%;
+                    }
+                    .words {
+                        margin-top: 38px;
+                        font-size: 16px;
+                        line-height: 22px;
+                        white-space: normal;
+                        text-align: left;
+                        width: 200px;
+                        height: 230px;
+                        color: @c-white;
+                        background: rgba(255, 255, 255, 0.5);
+                        -webkit-border-radius: 10px;
+                        -moz-border-radius: 10px;
+                        border-radius: 10px;
+                        padding: 20px 10px;
+                    }
+                }
             }
         }
     }

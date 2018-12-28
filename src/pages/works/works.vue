@@ -21,20 +21,20 @@
                     page_url:[ '作品展示','企业文化'],
                     page_sec: [
                         {
-                            nor_img:require('../../assets/nor_company.png'),
-                            act_img:require('../../assets/act_company.png'),
+                            nor_img:require('../../assets/nor_internestWorks.png'),
+                            act_img:require('../../assets/act_internetWorks.png'),
                             title:'网络大电影',
                             routerUrl:'/internetWorks'
                         },
                         {
-                            nor_img:require('../../assets/nor_curture.png'),
-                            act_img:require('../../assets/act_curture.png'),
+                            nor_img:require('../../assets/nor_theatreWorks.png'),
+                            act_img:require('../../assets/act_theatreWorks.png'),
                             title:'院线作品',
                             routerUrl:'/theatreWorks'
                         },
                         {
-                            nor_img:require('../../assets/nor_dec.png'),
-                            act_img:require('../../assets/act_dec.png'),
+                            nor_img:require('../../assets/nor_otherWorks.png'),
+                            act_img:require('../../assets/act_otherWorks.png'),
                             title:'其他作品',
                             routerUrl:'/otherWorks'
                         }

@@ -3,7 +3,7 @@
         <div class="content" style="min-height:600px;">
             <div class="title c-28">艺人合作</div>
             <ul class="actor_list">
-                <li>
+                <li @click.stop="checkDetail('1121231231')">
                     <img src="../../assets/3.png" alt="">
                     <p class="bg-black ">陈都灵</p>
                 </li>
@@ -51,7 +51,15 @@
 
 <script>
     export default {
-        name: "actor"
+        name: "actor",
+        methods:{
+            // 查看艺人详情
+            checkDetail(id){
+                this.$router.push({path: '/actorDetail',query:{ actorId: id}})
+            }
+
+        }
+
     }
 </script>
 

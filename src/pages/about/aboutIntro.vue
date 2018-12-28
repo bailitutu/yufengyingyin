@@ -96,7 +96,6 @@
 
         },
         mounted() {
-            console.log(this.$refs)
             this.itemWitch = this.$refs.swiperList.offsetWidth / this.devList.length;
         },
         methods: {

@@ -21,26 +21,26 @@
                     page_url:[ '关于我们','企业文化'],
                     page_sec: [
                         {
-                            nor_img:require('../../assets/nor_company.png'),
-                            act_img:require('../../assets/act_company.png'),
+                            nor_img:require('../../assets/nor_advertisement.png'),
+                            act_img:require('../../assets/act_advertisement.png'),
                             title:'广告合作',
                             routerUrl:'/advertisement'
                         },
                         {
-                            nor_img:require('../../assets/nor_dec.png'),
-                            act_img:require('../../assets/act_dec.png'),
+                            nor_img:require('../../assets/nor_show.png'),
+                            act_img:require('../../assets/act_show.png'),
                             title:'演艺演出',
                             routerUrl:'/show'
                         },
                         {
-                            nor_img:require('../../assets/nor_curture.png'),
-                            act_img:require('../../assets/act_curture.png'),
+                            nor_img:require('../../assets/nor_actor.png'),
+                            act_img:require('../../assets/act_actor.png'),
                             title:'艺人合作',
-                            routerUrl:'/actorDetail'
+                            routerUrl:'/actor'
                         },
                         {
-                            nor_img:require('../../assets/nor_vision.png'),
-                            act_img:require('../../assets/act_vision.png'),
+                            nor_img:require('../../assets/nor_dispersing.png'),
+                            act_img:require('../../assets/act_dispersing.png'),
                             title:'宣发合作',
                             routerUrl:'/dispersing'
                         }

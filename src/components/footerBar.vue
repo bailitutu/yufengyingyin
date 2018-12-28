@@ -3,7 +3,7 @@
         <div class="content">
             <p>Copyright&copy;湖南驱风者影视文化传媒有限公司</p>
             <p class="tac">湘ICP证C3-09909888号</p>
-            <p class="tar beiHao">湘公网安备 3204224238492829385号</p>
+            <p class="tal beiHao">湘公网安备 3204224238492829385号</p>
         </div>
     </div>
 </template>
@@ -27,10 +27,12 @@
             p{
                 float: left;
                 width: 33.33%;
+                height: 100%;
             }
             .beiHao{
-                padding-left:20px;
-                /*background: url("");*/
+                padding-left:24px;
+                background: url("../assets/icon_beian.png") no-repeat left center;
+                background-size:20px 20px;
             }
         }
     }

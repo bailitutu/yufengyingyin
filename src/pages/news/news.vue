@@ -21,26 +21,26 @@
                     page_url:[ '新闻中心','企业文化'],
                     page_sec: [
                         {
-                            nor_img:require('../../assets/nor_company.png'),
-                            act_img:require('../../assets/act_company.png'),
+                            nor_img:require('../../assets/nor_companyNews.png'),
+                            act_img:require('../../assets/act_companyNews.png'),
                             title:'企业新闻',
                             routerUrl:'/companyNews'
                         },
                         {
-                            nor_img:require('../../assets/nor_curture.png'),
-                            act_img:require('../../assets/act_curture.png'),
+                            nor_img:require('../../assets/nor_industryNews.png'),
+                            act_img:require('../../assets/act_industryNews.png'),
                             title:'行业动态',
                             routerUrl:'/industryNews'
                         },
                         {
-                            nor_img:require('../../assets/nor_dec.png'),
-                            act_img:require('../../assets/act_dec.png'),
+                            nor_img:require('../../assets/nor_recentNews.png'),
+                            act_img:require('../../assets/act_recentNews.png'),
                             title:'最新动态',
                             routerUrl:'/recentNews'
                         },
                         {
-                            nor_img:require('../../assets/nor_vision.png'),
-                            act_img:require('../../assets/act_vision.png'),
+                            nor_img:require('../../assets/nor_feature.png'),
+                            act_img:require('../../assets/act_feature.png'),
                             title:'彩蛋花絮',
                             routerUrl:'/feature'
                         }

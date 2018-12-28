@@ -1,7 +1,7 @@
 <template>
     <div class="works_item">
         <div class="works_recommend">
-            <div class="rec_left fl">
+            <div class="rec_left fl" @click.stop="checkDetail('1111')">
                 <img src="../assets/1.png" class="w-f h-f" alt="">
             </div>
             <div class="rec_right fl">
@@ -38,7 +38,13 @@
 
 <script>
     export default {
-        name: "works-list"
+        name: "works-list",
+        methods:{
+            //查看作品详情
+            checkDetail(id){
+                this.$router.push({path: '/worksDetail', query: { id: id}})
+            }
+        }
     }
 </script>
 <style lang="less" scoped>

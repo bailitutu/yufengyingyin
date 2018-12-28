@@ -1,6 +1,6 @@
 <template>
     <div class="normal_detail">
-        <h4 class="c-28 detail_title tac">活动名称</h4>
+        <h4 class="c-28 detail_title tac">《守卫者-浮出水面》</h4>
         <p class="c-b0 detail_time tac">2018-09-09 12:00:00</p>
         <img src="../assets/1.png" class="detail_img" alt="">
         <p class="detail_info c-28">简介：《守卫者-浮出水面》是潘镜丞执导的当代都市谍战剧，由靳东、韩雨芹领衔主演。该剧讲述了在机密单位301研究所研发的新型深海潜水器下水实
@@ -21,6 +21,7 @@
         text-align: center;
         .detail_title {
             font-size: 30px;
+            text-indent:2em;
         }
         .detail_time {
             display: inline-block;

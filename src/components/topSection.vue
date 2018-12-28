@@ -11,7 +11,7 @@
         </div>
         <div class="sec bg-white page_sec">
             <div class="content page_info">
-                <p class="page_position c-6E" v-if=" pageData.page_url">当前位置> {{ pageData.page_url.join('>')}}</p>
+                <p class="page_position c-6E" v-if="pagePosition">当前位置>{{ pagePosition.join('>')}}</p>
                 <div class="page_section" v-if="pageSecList.length > 0">
                     <ul>
                         <li @click.stop="checkSec(item)" :class="item.active ? 'active': ''"
@@ -32,14 +32,16 @@
         props: ['pageData'],
         data() {
             return {
-                pageSecList: []
+                pageSecList: [],
+                pagePosition:[]
             }
         },
-        created() {
+        mounted(){
+            // 设置子路由状态
             if (this.pageData.page_sec && this.pageData.page_sec.length > 0) {
                 let arr = this.pageData.page_sec;
-                this.pageSecList = arr.map((cell, ind) => {
-                    if (ind == 0) {
+                this.pageSecList = arr.map((cell) => {
+                    if ( cell.routerUrl == this.$route.matched[1].path  ) { //保持页面刷新时，路由组件状态不变
                         cell.active = true
                     } else {
                         cell.active = false;
@@ -47,8 +49,18 @@
                     return cell;
                 })
             }
+            this.setPagePostion();
         },
         methods: {
+            // 设置页面导航路径
+            setPagePostion(){
+                if( this.$route.matched && this.$route.matched.length > 0){
+                    this.pagePosition = this.$route.matched.map((cell)=>{
+                        return cell.name
+                    })
+                }
+            },
+
             // 切换子页面版块
             checkSec(item) {
                 this.$router.push({path: item.routerUrl});
@@ -60,6 +72,7 @@
                     }
                     return cell
                 })
+                this.setPagePostion()
             }
         }
     }
@@ -103,6 +116,7 @@
         .page_info {
             height: 80px;
             .page_position {
+                float: left;
                 font-size: 16px;
                 height: 80px;
                 line-height: 80px;

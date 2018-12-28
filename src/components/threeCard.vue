@@ -1,6 +1,6 @@
 <template>
     <ul class="normal_list">
-        <li>
+        <li @click.stop="checkDetail('121231231')">
             <img src="../assets/2.png" class="w-f" alt="">
             <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
         </li>
@@ -45,7 +45,21 @@
 
 <script>
     export default {
-        name: "three-card"
+        name: "three-card",
+        props : {
+            // detailUrl:''
+        },
+        data(){
+          return {
+              detailUrl: '/newsDetail'
+          }
+        },
+        methods:{
+            // 查看详情
+            checkDetail(id){
+                this.$router.push({ path: this.detailUrl, query:{ id:id }})
+            }
+        }
     }
 </script>
 

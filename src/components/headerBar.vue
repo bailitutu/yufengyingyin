@@ -7,13 +7,6 @@
                 <router-link class="menu_cell " :class="item.active ? 'active' : ''" @click.native="changeRouter(item)"
                              v-for="(item,index) in routerList" :key="index" :to="item.url">{{item.title}}
                 </router-link>
-                <!--<router-link class="menu_cell active"  to="/">首页</router-link>-->
-                <!--<router-link class="menu_cell"  to="/about">关于我们</router-link>-->
-                <!--<router-link class="menu_cell"  to="/about">新闻中心</router-link>-->
-                <!--<router-link class="menu_cell"  to="/about">作品展示</router-link>-->
-                <!--<router-link class="menu_cell"  to="/about">商务合作</router-link>-->
-                <!--<router-link class="menu_cell"  to="/activity">最新活动</router-link>-->
-                <!--<router-link class="menu_cell"  to="/contact">联系我们</router-link>-->
             </div>
 
         </div>
@@ -68,22 +61,40 @@
         created() {
             var that = this;
             window.onscroll = function () {
-                var dTop = document.documentElement.scrollTop || document.body.scrollTop;
+                let dTop = document.documentElement.scrollTop || document.body.scrollTop;
                 if (dTop > 0) {
                     that.showActive = true;
                 } else {
                     that.showActive = false;
                 }
             }
+
+
         },
-        watch: {
-            '$route': {
-                handler: (to) => {
-                    console.log(to.matched)
-                }
-            }
+        watch:{
+          '$route'(to ,from){
+              document.documentElement.scrollTop ? document.documentElement.scrollTop = 0 : document.body.scrollTop = 0
+              this.setRouter()
+          }
+        },
+        mounted(){
+            // 设置路由状态
+            this.setRouter()
         },
         methods: {
+            // 设置路由状态
+            setRouter(){
+                this.routerList = this.routerList.map((item) => {
+                    if (item.title == this.$route.matched[0].name) { //保持页面刷新时，路由组件状态不变
+                        item.active = true;
+                    } else {
+                        item.active = false;
+                    }
+                    return item;
+                })
+            },
+
+            // 切换路由
             changeRouter(item) {
                 this.routerList = this.routerList.map((cell) => {
                     if (cell.title == item.title) {

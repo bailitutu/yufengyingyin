@@ -1,53 +1,61 @@
 <template>
-    <ul class="show_list">
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-        <li>
-            <img src="../assets/3.png" alt="">
-            <p class="one_raw c-white">科技宣传片EDIUS模板</p>
-        </li>
-
-
-    </ul>
+    <div>
+        <ul class="show_list" v-if="list.length > 0">
+            <li v-for="(item,index) in list" :key="index" @click.stop="playVideo">
+                <img :src="item.imgUrl" alt="">
+                <p class="one_raw c-white">{{item.title}}</p>
+            </li>
+        </ul>
+        <video-play video-type="mp4" video-url=""  @closeVideo="closeVideo" :show-video="showVideo"></video-play>
+        <blank-page v-if="list.length === 0 "></blank-page>
+    </div>
 </template>
 
 <script>
+    import videoPlay from '@/components/videoPlay.vue'
+    import blankPage from '@/components/blankPage.vue'
+
     export default {
-        name: "three-col"
+        name: "three-col",
+        components:{
+            videoPlay,
+            blankPage
+        },
+        data(){
+            return {
+                showVideo: false,
+                list:[{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                },{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                },{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                },{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                },{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                },{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                },{
+                    imgUrl:require('../assets/3.png'),
+                    title:'科技宣传片EDIUS模板'
+                }]
+            }
+        },
+        methods:{
+            playVideo(){
+                this.showVideo = true
+            },
+            closeVideo(){
+                this.showVideo = false
+            }
+        }
     }
 </script>
 

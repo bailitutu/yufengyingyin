@@ -123,7 +123,7 @@ export default new Router({
         },
         {
             path: '/business',
-            name: '商业合作',
+            name: '商务合作',
             component: business,
             redirect:'/advertisement',
             children: [

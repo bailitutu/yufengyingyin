@@ -58,32 +58,37 @@
                 ]
             }
         },
-        created() {
-            var that = this;
-            window.onscroll = function () {
-                let dTop = document.documentElement.scrollTop || document.body.scrollTop;
-                if (dTop > 0) {
-                    that.showActive = true;
-                } else {
-                    that.showActive = false;
-                }
+
+        watch: {
+            '$route'(to, from) {
+                //路由变化时默认滚动条回到顶部
+                document.documentElement.scrollTop ? document.documentElement.scrollTop = 0 : document.body.scrollTop = 0 ;
+                // 重置路由指向
+                this.setRouter()
             }
-
-
         },
-        watch:{
-          '$route'(to ,from){
-              document.documentElement.scrollTop ? document.documentElement.scrollTop = 0 : document.body.scrollTop = 0
-              this.setRouter()
-          }
-        },
-        mounted(){
+        mounted() {
             // 设置路由状态
-            this.setRouter()
+            this.setRouter();
+            // 设置顶部导航栏背景状态
+            this.setTopBg();
         },
         methods: {
+            // 设置顶部导航栏背景状态
+            setTopBg() {
+                let that = this;
+                window.onscroll = function () {
+                    let dTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    if (dTop > 0) {
+                        that.showActive = true;
+                    } else {
+                        that.showActive = false;
+                    }
+                }
+            },
+
             // 设置路由状态
-            setRouter(){
+            setRouter() {
                 this.routerList = this.routerList.map((item) => {
                     if (item.title == this.$route.matched[0].name) { //保持页面刷新时，路由组件状态不变
                         item.active = true;
@@ -104,7 +109,6 @@
                     }
                     return cell
                 })
-
             }
         }
 

@@ -5,9 +5,17 @@
 <script>
     export default {
         name: "create-map",
-        data(){
-            return{
+        props:{
+            lngPoint: {
+                type:Number,
+                // required: true, //是否必传
+                default:116.409
+            },
 
+            latPoint: {
+                type:Number,
+                // required: true, //是否必传
+                default: 39.918
             }
         },
         mounted(){
@@ -16,11 +24,8 @@
         methods:{
             createMap(){
                 var map = new BMap.Map("container");
-                var point = new BMap.Point(116.404, 39.915);
+                var point = new BMap.Point(this.lngPoint, this.latPoint);
                 map.centerAndZoom(point, 15);
-                window.setTimeout(function(){
-                    map.panTo(new BMap.Point(116.409, 39.918));
-                }, 2000);
             }
         }
     }

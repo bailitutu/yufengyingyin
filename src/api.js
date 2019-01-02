@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 let http = axios.create({
-    // baseURL: 'http://192.168.10.63/api',
-    baseURL: 'http://www.yichuangpt.com/api',
+    baseURL: 'http://mock.eolinker.com/CtL6GkGc7aeee69424a667b935ac3c1044573a33a4a44f2?uri=',
     withCredentials: false,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -25,33 +24,36 @@ function apiAxios(method, url, params, response, error) {
         data: method === 'POST' || method === 'PUT' ? params : null,
         params: method === 'GET' || method === 'DELETE' ? params : null,
     }).then(function (res) {
-        if (res.data &&　res.data.code == 0) {
-            response(res.data);
+        console.log(res)
+        if (res.data && res.data.head && res.data.head.respCode == '0000000') {
+            response(res.data.body);
         } else {
-            if(!res.data){
+            if (!res.data) {
                 res.data = {
                     msg: '系统出问题了！'
                 }
             }
-            if(error){
-              error(res.data)
+            if (error) {
+                error(res.data.body)
             }
         }
     }).catch(function (err) {
-        if(!err.msg){
+        if (!err.msg) {
             err.msg = '系统出问题了!'
         }
-        if(error){
-          error(err)
+        if (error) {
+            error(err)
+        }else{
+            alert( '系统出问题了!')
         }
     })
 }
 
 export default {
-    get: function (url, params, response,error) {
-        return apiAxios('GET', url, params, response,error)
+    get: function (url, params, response, error) {
+        return apiAxios('GET', url, params, response, error)
     },
-    post: function (url, params, response,error) {
-        return apiAxios('POST', url, params, response,error)
+    post: function (url, params, response, error) {
+        return apiAxios('POST', url, params, response, error)
     }
 }

@@ -6,40 +6,25 @@
                     <img src="../../assets/2.png" alt="">
                 </div>
                 <div class="actor_info_cell">
-                    <h2>黄渤</h2>
-                    <p><span>生日：</span> 12月26日 </p>
-                    <p><span>星座：</span> 摩羯座</p>
-                    <p><span>星座：</span> 摩羯座</p>
-                    <p><span>星座：</span> 摩羯座</p>
-                    <p><span>星座：</span> 摩羯座</p>
-                    <p><span>毕业院校：</span> 中央戏剧学院</p>
-                    <p><span>经济公司：</span> 高娱明星经纪公司</p>
+                    <h2>{{actorDetail.name}}</h2>
+                    <p><span>生日：</span> {{ actorDetail.birthday}} </p>
+                    <p><span>星座：</span> {{actorDetail.constellation}}</p>
+                    <p><span>身高：</span> {{ actorDetail.height}} cm</p>
+                    <p><span>体重：</span> {{ actorDetail.weight}} kg</p>
+                    <p><span>籍贯：</span> {{ actorDetail.place}}</p>
+                    <p><span>毕业院校：</span> {{ actorDetail.school}}</p>
+                    <p><span>经济公司：</span> {{ actorDetail.company}}</p>
                 </div>
 
             </div>
             <div class="actor_works">
                 <p class="c-28">代表作品</p>
                 <ul class="actor_work_list">
-                    <li>
-                        <img src="../../assets/2.png" alt="">
-                        <p class="tac c-28 one_raw">《大汉天子2》</p>
+                    <li v-for="(works,index) in list" :key="index">
+                        <img :src="works.imgWork" alt="">
+                        <p class="tac c-28 one_raw">《{{ works.titleWork}}》</p>
                     </li>
-                    <li>
-                        <img src="../../assets/2.png" alt="">
-                        <p class="tac c-28 one_raw">《大汉天子2》</p>
-                    </li>
-                    <li>
-                        <img src="../../assets/2.png" alt="">
-                        <p class="tac c-28 one_raw">《大汉天子2》</p>
-                    </li>
-                    <li>
-                        <img src="../../assets/2.png" alt="">
-                        <p class="tac c-28 one_raw">《大汉天子2》</p>
-                    </li>
-                    <li>
-                        <img src="../../assets/2.png" alt="">
-                        <p class="tac c-28 one_raw">《大汉天子2》</p>
-                    </li>
+
                 </ul>
             </div>
 
@@ -49,7 +34,30 @@
 
 <script>
     export default {
-        name: "actor-detail"
+        name: "actor-detail",
+        data(){
+            return {
+                actorDetail:{},
+                actorId:''
+            }
+        },
+        mounted(){
+            this.getDetail();
+            this.actorId = this.$route.query.id || ''
+        },
+        methods:{
+            //获取艺人详细信息
+            getDetail(){
+                this.$http.get('/business/actorDetail',{
+                    id:this.actorId
+                },(res)=>{
+                    console.log(res)
+                    this.actorDetail = res.actorInfo || {};
+                    this.list = res.list || [];
+                })
+
+            }
+        }
     }
 </script>
 

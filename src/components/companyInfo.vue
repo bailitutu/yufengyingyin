@@ -1,14 +1,14 @@
 <template>
     <div class="sec contact_sec bg-white">
-        <div class="content contact_content">
+        <div class="content contact_content" v-if="pageInfo">
             <div class="map_item">
                 <create-map></create-map>
             </div>
-            <div class="info_item">
-                <h3>湖南驭风者影视文化传媒有限公司</h3>
-                <p>联系电话：400-0980-0880</p>
-                <p>企业邮箱：400-0980-0880</p>
-                <p>公司地址：湖南省长沙市阜宁县红岭路498号</p>
+            <div class="info_item" >
+                <h3>{{pageInfo.companyName}}</h3>
+                <p>联系电话：{{pageInfo.companyPhone}}</p>
+                <p>企业邮箱：{{pageInfo.companyEmail}}</p>
+                <p>公司地址：{{pageInfo.companyAddress}}</p>
             </div>
         </div>
     </div>
@@ -21,6 +21,15 @@
         components: {
             createMap
         },
+        props:['pageInfo'],
+        data(){
+            return {
+
+            }
+        },
+        mounted(){
+            console.log(this)
+        }
     }
 </script>
 

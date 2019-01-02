@@ -3,45 +3,9 @@
         <div class="content" style="min-height:600px;">
             <div class="title c-28">艺人合作</div>
             <ul class="actor_list">
-                <li @click.stop="checkDetail('1121231231')">
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
-                </li>
-                <li>
-                    <img src="../../assets/3.png" alt="">
-                    <p class="bg-black ">陈都灵</p>
+                <li @click.stop="checkDetail(actor.id)" v-for="(actor,index) in list" :key="index">
+                    <img :src="actor.cooperImg" alt="">
+                    <p class="bg-black ">{{actor.name}}</p>
                 </li>
             </ul>
 
@@ -52,12 +16,26 @@
 <script>
     export default {
         name: "actor",
+        data(){
+            return{
+                list:[]
+            }
+        },
+        mounted(){
+            this.getActorList();
+        },
         methods:{
+            // 获取艺人列表
+            getActorList(){
+                this.$http.get('/business/actorList',{},(res)=>{
+                    console.log(res)
+                    this.list = res.list ?  res.list : [];
+                })
+            },
             // 查看艺人详情
             checkDetail(id){
                 this.$router.push({path: '/actorDetail',query:{ actorId: id}})
             }
-
         }
 
     }

@@ -10,7 +10,7 @@
 
 <script>
     export default {
-        name: "normal-detail"
+        name: "normal-detail",
     }
 </script>
 <style lang="less" scoped>

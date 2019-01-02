@@ -1,40 +1,8 @@
 <template>
     <ul class="normal_list">
-        <li @click.stop="checkDetail('121231231')">
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
+        <li @click.stop="checkDetail(item.id)" v-for="(item,index) in list" :key="index">
+            <img :src="item.img" class="w-f" alt="">
+            <p class="c-28 one_raw">{{item.title}}</p>
         </li>
         <li>
             <img src="../assets/2.png" class="w-f" alt="">
@@ -47,12 +15,14 @@
     export default {
         name: "three-card",
         props : {
-            // detailUrl:''
-        },
-        data(){
-          return {
-              detailUrl: '/newsDetail'
-          }
+            detailUrl:{
+                type:String,
+                default:'/newsDetail'
+            },
+            list:{
+                type:Array,
+                default: []
+            }
         },
         methods:{
             // 查看详情

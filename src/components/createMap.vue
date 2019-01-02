@@ -25,7 +25,12 @@
             createMap(){
                 var map = new BMap.Map("container");
                 var point = new BMap.Point(this.lngPoint, this.latPoint);
-                map.centerAndZoom(point, 15);
+                map.centerAndZoom(point, 12);
+                var local = new BMap.LocalSearch(map, {
+                    renderOptions:{map: map}
+                });
+                local.search("湖南省长沙市开福区北辰时代广场中信银行大厦");
+                local.setPageCapacity(1,1); //设置只显示第一个
             }
         }
     }

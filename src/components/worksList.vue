@@ -1,44 +1,59 @@
 <template>
     <div class="works_item">
-        <div class="works_recommend">
-            <div class="rec_left fl" @click.stop="checkDetail('1111')">
-                <img src="../assets/1.png" class="w-f h-f" alt="">
+        <div class="works_recommend" v-if="commondList.length == 3">
+            <div class="rec_left fl"  @click.stop="checkDetail(commondList[0].id )">
+                <img :src="commondList[0].newsBigImg" class="w-f h-f" alt="">
             </div>
             <div class="rec_right fl">
-                <div class="rec_cell">
-                    <img src="../assets/2.png" class="w-f h-f" alt="">
+                <div class="rec_cell"  @click.stop="checkDetail(commondList[1].id )">
+                    <img :src="commondList[1].newsBigImg"  class="w-f h-f" alt="">
                 </div>
-                <div class="rec_cell">
-                    <img src="../assets/3.png" class="w-f h-f"  alt="">
+                <div class="rec_cell"  @click.stop="checkDetail(commondList[2].id )">
+                    <img :src="commondList[2].newsBigImg"  class="w-f h-f"  alt="">
                 </div>
             </div>
         </div>
-        <ul class="works_list">
-            <li>
-                <img src="../assets/3.png" class="w-f h-f"  alt="">
-            </li>
-            <li>
-                <img src="../assets/3.png" class="w-f h-f"  alt="">
-            </li>
-            <li>
-                <img src="../assets/3.png" class="w-f h-f"  alt="">
-            </li>
-            <li>
-                <img src="../assets/3.png" class="w-f h-f"  alt="">
-            </li>
-            <li>
-                <img src="../assets/3.png" class="w-f h-f"  alt="">
-            </li>
-            <li>
-                <img src="../assets/3.png" class="w-f h-f"  alt="">
+        <ul class="works_list" v-if="worksList.length> 0">
+            <li v-for="(works,index) in worksList" :key="index" @click.stop="checkDetail(works.id )" >
+                <img :src="works.newsImg"  class="w-f h-f"  alt="">
             </li>
         </ul>
+        <blank-page v-if="list.length === 0 "></blank-page>
     </div>
 </template>
 
 <script>
+    import blankPage from '@/components/blankPage.vue'
+
     export default {
         name: "works-list",
+        components:{
+            blankPage
+        },
+        props:{
+            list:{
+                type:Array,
+                default:[]
+            }
+        },
+        data(){
+            return{
+                commondList:[], //推荐作品列表
+                worksList:[] //普通作品列表
+            }
+        },
+        watch:{
+            list(val,oldVal){
+                if( val && val.length > 0){
+                    this.commondList = val.filter((item,index)=>{
+                        return index < 3;
+                    })
+                    this.worksList = val.filter((item,index)=>{
+                        return index >= 3;
+                    })
+                }
+            }
+        },
         methods:{
             //查看作品详情
             checkDetail(id){

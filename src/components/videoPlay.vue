@@ -16,6 +16,7 @@
         props:{
             videoType:String  ,
             videoUrl:String,
+            videoImg:String,
             showVideo: Boolean,
             closeVideo:Function
         },
@@ -25,16 +26,16 @@
                     // playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
                     autoplay: false, //如果true,浏览器准备好时开始回放。
                     muted: false, // 默认情况下将会消除任何音频。
-                    loop: false, // 导致视频一结束就重新开始。
-                    preload: 'auto', // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+                    loop: false, // 是否循环。
+                    preload: 'auto',
                     language: 'zh-CN',
                     aspectRatio: '16:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
                     fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
                     sources: [{
-                        type: "video/mp4",
-                        src: require("../assets/videodemo.mp4") //url地址
+                        type:'',
+                        src:''
                     }],
-                    poster: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545972888172&di=366112a41ee9a04462469fee03965113&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D182026362%2C1185441817%26fm%3D214%26gp%3D0.jpg", //你的封面地址
+                    poster:'',
                     notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
                     controlBar: {
                         timeDivider: true,
@@ -43,6 +44,17 @@
                         fullscreenToggle: true  //全屏按钮
                     }
                 }
+            }
+        },
+        watch:{
+            videoType(){
+                this.playerOptions.sources[0].type = 'video/'+ this.videoType;
+            },
+            videoUrl(){
+                this.playerOptions.sources[0].src = this.videoUrl;
+            },
+            videoImg(){
+                this.playerOptions.poster = this.videoImg;
             }
         },
         methods:{

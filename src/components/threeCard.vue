@@ -1,19 +1,24 @@
 <template>
-    <ul class="normal_list">
-        <li @click.stop="checkDetail(item.id)" v-for="(item,index) in list" :key="index">
-            <img :src="item.img" class="w-f" alt="">
-            <p class="c-28 one_raw">{{item.title}}</p>
-        </li>
-        <li>
-            <img src="../assets/2.png" class="w-f" alt="">
-            <p class="c-28 one_raw">这里是标题这里是标题这里是标题这里是标题这里是标题这里是标题</p>
-        </li>
-    </ul>
+    <div>
+        <ul class="normal_list">
+            <li @click.stop="checkDetail(item.id)" v-for="(item,index) in list" :key="index">
+                <img :src="item.img" class="w-f" alt="">
+                <p class="c-28 one_raw">{{item.title}}</p>
+            </li>
+        </ul>
+        <blank-page v-if="list.length === 0 "></blank-page>
+    </div>
+
 </template>
 
 <script>
+    import blankPage from '@/components/blankPage.vue'
+
     export default {
         name: "three-card",
+        components:{
+            blankPage
+        },
         props : {
             detailUrl:{
                 type:String,

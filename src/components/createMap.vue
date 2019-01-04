@@ -6,31 +6,25 @@
     export default {
         name: "create-map",
         props:{
-            lngPoint: {
-                type:Number,
-                // required: true, //是否必传
-                default:116.409
-            },
-
-            latPoint: {
-                type:Number,
-                // required: true, //是否必传
-                default: 39.918
+            address:{
+                type:String,
+                default:''
             }
         },
         mounted(){
             this.createMap();
         },
         methods:{
+            // 创建地图
             createMap(){
-                var map = new BMap.Map("container");
-                var point = new BMap.Point(this.lngPoint, this.latPoint);
-                map.centerAndZoom(point, 12);
-                var local = new BMap.LocalSearch(map, {
-                    renderOptions:{map: map}
+                this.map = new BMap.Map("container");
+                this.point = new BMap.Point(116.404, 39.915);
+                this.map.centerAndZoom(this.point, 12);
+                this.local = new BMap.LocalSearch(this.map, {
+                    renderOptions:{map: this.map}
                 });
-                local.search("湖南省长沙市开福区北辰时代广场中信银行大厦");
-                local.setPageCapacity(1,1); //设置只显示第一个
+                this.local.search(this.address);
+                this.local.setPageCapacity(1,1); //设置只显示第一个
             }
         }
     }

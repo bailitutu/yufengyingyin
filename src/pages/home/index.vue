@@ -2,10 +2,10 @@
     <div>
         <div class="sec banner-sec">
             <div class="img_item">
-                <img src="../../assets/1.png" class="w-f h-f" alt="">
+                <img :src="pageInfo.bgImg" class="w-f h-f" alt="">
             </div>
             <div class="content banner-content bg-white">
-                <p class="fl">400-9807-8888</p>
+                <p class="fl" v-if="pageInfo.companyInfo">{{pageInfo.companyInfo.companyPhone}}</p>
                 <button class="more_btn fr bg-white" @click.stop="goPage('/about')">MORE>></button>
             </div>
         </div>
@@ -57,38 +57,10 @@
                         <h1>新闻中心</h1>
                         <p>News Center</p>
                     </div>
-                    <ul class="news_list">
-                        <li class="c-white" @click.stop="goPage('newsDetail',{ id : '233323'})">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
-                        </li>
-                        <li class="c-white">
-                            <div class="news_info one_raw">所有的用心都值得：JEET运动耳机视频拍摄实记JEET运动耳机视频拍摄实记</div>
-                            <span>2018-12-06</span>
+                    <ul class="news_list" v-if="pageInfo.newList">
+                        <li class="c-white" v-for=" (news,n) in pageInfo.newList" :key="n" @click.stop="goPage('newsDetail',{ id : news.id})">
+                            <div class="news_info one_raw">{{ news.newsTitle}}</div>
+                            <span>{{news.createTime}}</span>
                         </li>
                     </ul>
                 </div>
@@ -101,47 +73,26 @@
                     <button class="more_work bg-black c-white" @click.stop="goPage('/works')">READ MORE</button>
                 </div>
                 <ul class="works_list">
-                    <li @click.stop="goPage( '/worksDetail', { id: '1111'} )">
+                    <li  v-for="( works,w) in pageInfo.workList" :key="w" @click.stop="goPage( '/worksDetail', { id: works.id} )">
                         <div class="work_cell">
-                            <img src="../../assets/2.png" class="" alt="">
-                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
-                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="work_cell">
-                            <img src="../../assets/2.png" class="" alt="">
-                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
-                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="work_cell">
-                            <img src="../../assets/2.png" class="" alt="">
-                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
-                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="work_cell">
-                            <img src="../../assets/2.png" class="" alt="">
-                            <h4 class="c-28 tal one_raw">那座城这家人</h4>
-                            <p class="c-6E tal one_raw">1976年，一场7.8级地震，把王大鸣、林智燕小两口……</p>
+                            <img :src="works.newsImg" class="" alt="">
+                            <h4 class="c-28 tal one_raw">{{works.newsTitle}}</h4>
+                            <p class="c-6E tal one_raw">{{works.newsText}}</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="sec contact_sec">
-            <div class="content contact_content">
+            <div class="content contact_content" v-if="pageInfo.companyInfo">
                 <div class="map_item">
-                    <create-map></create-map>
+                    <create-map :address="pageInfo.companyInfo.companyAddress"></create-map>
                 </div>
-                <div class="info_item">
-                    <h3>湖南驭风者影视文化传媒有限公司</h3>
-                    <p>联系电话：400-0980-0880</p>
-                    <p>企业邮箱：400-0980-0880</p>
-                    <p>公司地址：湖南省长沙市阜宁县红岭路498号</p>
+                <div class="info_item" >
+                    <h3>{{pageInfo.companyInfo.companyName}}</h3>
+                    <p>联系电话：{{pageInfo.companyInfo.companyPhone}}</p>
+                    <p>企业邮箱：{{pageInfo.companyInfo.companyEmail}}</p>
+                    <p>公司地址：{{pageInfo.companyInfo.companyAddress}}</p>
                 </div>
             </div>
         </div>
@@ -158,6 +109,7 @@
         },
         data(){
             return {
+                pageInfo:{},
                 playerOptions:{
                     // playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
                     autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -168,10 +120,10 @@
                     aspectRatio: '14:9', // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
                     fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
                     sources: [{
-                        type: "video/mp4",
-                        src: require("../../assets/videodemo.mp4") //url地址
+                        type: '',
+                        src: ''//url地址
                     }],
-                    poster: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545972888172&di=366112a41ee9a04462469fee03965113&imgtype=jpg&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D182026362%2C1185441817%26fm%3D214%26gp%3D0.jpg", //你的封面地址
+                    poster: "", //你的封面地址
                     notSupportedMessage: '此视频暂无法播放，请稍后再试', //允许覆盖Video.js无法播放媒体源时显示的默认信息。
                     controlBar: {
                         timeDivider: true,
@@ -182,7 +134,25 @@
                 }
             }
         },
+        mounted(){
+            this.getPageData();
+        },
         methods: {
+            // 获取页面数据
+            getPageData(){
+                this.$http.get('/home/homeInfo',{},(res)=>{
+                    console.log(res);
+                    if(res.workList && res.workList.length > 0){
+                        res.workList = res.workList.filter((item,index) =>{ return index < 4});
+                    }
+                    this.pageInfo = res;
+                    this.playerOptions.sources[0].type = 'video/'+ res.videoInfo.videoType;
+                    this.playerOptions.sources[0].src = res.videoInfo.videoUrl;
+                    this.playerOptions.poster = res.videoInfo.poster;
+                })
+            },
+
+
             // 跳转页面
             goPage(path, query) {
                 this.$router.push({path: path, query: query || {}})

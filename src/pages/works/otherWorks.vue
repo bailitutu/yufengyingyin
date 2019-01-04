@@ -2,7 +2,7 @@
     <div class="sec bg-white">
         <div class="content" >
             <section-title text="其他作品"></section-title>
-            <works-list></works-list>
+            <works-list :list="listInfo"></works-list>
         </div>
     </div>
 </template>
@@ -17,6 +17,24 @@
             sectionTitle,
             worksList
         },
+        data(){
+            return {
+                listInfo:[]
+            }
+        },
+        mounted(){
+            this.getData();
+        },
+        methods:{
+            // 获取作品信息列表
+            getData(){
+                this.$http.get( '/works/workList',{
+                    newsClassificationId:'3'
+                },(res)=>{
+                    this.listInfo = res.list || []
+                })
+            }
+        }
     }
 </script>
 

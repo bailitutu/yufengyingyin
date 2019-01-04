@@ -17,8 +17,7 @@
                 pagedata:{
                     bg_words:'WORKS',
                     title_words:'作品展示',
-                    title_info:'驭风者影业以“驭风者，皓月当空；任驰骋，万里江山；一切尽在股掌！”为企业之魂，坚持以彰显湖湘精神，推动中国文化产业驭风者影业以“驭风者，皓月当空；任驰骋，万里江山；一切尽在股掌！”为企业之魂，坚持以彰显湖湘精神，推动中国文化产业',
-                    page_url:[ '作品展示','企业文化'],
+                    title_info:'驭风者影视相关院线电影、网络大电影、电视剧、广告片、纪录片、综艺节目、等资讯。',
                     page_sec: [
                         {
                             nor_img:require('../../assets/nor_internestWorks.png'),

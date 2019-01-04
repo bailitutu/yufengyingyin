@@ -2,7 +2,7 @@
     <div class="sec contact_sec bg-white">
         <div class="content contact_content" v-if="pageInfo">
             <div class="map_item">
-                <create-map></create-map>
+                <create-map :address="pageInfo.companyAddress"></create-map>
             </div>
             <div class="info_item" >
                 <h3>{{pageInfo.companyName}}</h3>
@@ -21,15 +21,7 @@
         components: {
             createMap
         },
-        props:['pageInfo'],
-        data(){
-            return {
-
-            }
-        },
-        mounted(){
-            console.log(this)
-        }
+        props:['pageInfo']
     }
 </script>
 

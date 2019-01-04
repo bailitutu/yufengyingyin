@@ -4,6 +4,7 @@ import index from '@/pages/home/index';
 import about from '@/pages/about/about';
 import aboutCulture from '@/pages/about/aboutCulture';
 import aboutDec from '@/pages/about/aboutDec';
+import aboutDecDetail from '@/pages/about/aboutDecDetail';
 import aboutIntro from '@/pages/about/aboutIntro';
 import aboutVision from '@/pages/about/aboutVision';
 import news from '@/pages/news/news';
@@ -51,6 +52,10 @@ export default new Router({
                     path: '/aboutDec',
                     name: '宣发体系',
                     component: aboutDec
+                },   {
+                    path: '/aboutDecDetail',
+                    name: '宣发体系详情',
+                    component: aboutDecDetail
                 },
                 {
                     path: '/aboutIntro',

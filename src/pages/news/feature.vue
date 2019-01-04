@@ -2,7 +2,7 @@
     <div class="sec bg-white">
         <div class="content" >
             <section-title text="彩蛋花絮"></section-title>
-            <three-col></three-col>
+            <three-col :list="listInfo"></three-col>
         </div>
     </div>
 </template>
@@ -16,6 +16,22 @@
             threeCol,
             sectionTitle
         },
+        data(){
+            return {
+                listInfo:[]
+            }
+        },
+        mounted(){
+            this.getPageData();
+        },
+        methods:{
+            // 获取页面数据
+            getPageData(){
+                this.$http.get('/news/getFeature',{},(res)=>{
+                    this.listInfo = res.list || [];
+                })
+            }
+        }
     }
 </script>
 

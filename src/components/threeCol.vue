@@ -1,12 +1,12 @@
 <template>
     <div>
         <ul class="show_list" v-if="list.length > 0">
-            <li v-for="(item,index) in list" :key="index" @click.stop="playVideo">
+            <li v-for="(item,index) in list" :key="index" @click.stop="playVideo(item)">
                 <img :src="item.imgUrl" alt="">
                 <p class="one_raw c-white">{{item.title}}</p>
             </li>
         </ul>
-        <video-play video-type="mp4" video-url=""  @closeVideo="closeVideo" :show-video="showVideo"></video-play>
+        <video-play v-if="list.length > 0" :video-type="currentType" :video-url="currentUrl" :video-img="currentImg" @closeVideo="closeVideo" :show-video="showVideo"></video-play>
         <blank-page v-if="list.length === 0 "></blank-page>
     </div>
 </template>
@@ -21,37 +21,30 @@
             videoPlay,
             blankPage
         },
+        props:{
+            list:{
+                type:Array,
+                default:[]
+            }
+        },
         data(){
             return {
                 showVideo: false,
-                list:[{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                },{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                },{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                },{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                },{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                },{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                },{
-                    imgUrl:require('../assets/3.png'),
-                    title:'科技宣传片EDIUS模板'
-                }]
+                currentImg:'',
+                currentType:'',
+                currentUrl:''
             }
         },
         methods:{
-            playVideo(){
-                this.showVideo = true
+            // 点击播放花絮视频
+            playVideo(item){
+                console.log(item)
+                this.currentImg = item.imgUrl;
+                this.currentType = item.videoType;
+                this.currentUrl = item.videoUrl;
+                this.showVideo = true;
             },
+            // 关闭视频
             closeVideo(){
                 this.showVideo = false
             }

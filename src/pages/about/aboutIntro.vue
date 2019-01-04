@@ -4,7 +4,8 @@
             <div class="content">
                 <section-title text="企业简介"></section-title>
                 <div class="intro_item">
-                    <div class="intro_left fl">
+                    <div class="intro_left fl" v-html="companyInfo.companyTextHtml">
+
                         <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
                             者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
                         <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
@@ -13,7 +14,7 @@
                             者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
                     </div>
                     <div class="intro_right fl">
-                        <img src="../../assets/1.png" class="w-f h-f" alt="">
+                        <img :src="companyInfo.companyImg" class="w-f h-f" alt="">
                     </div>
                 </div>
 
@@ -22,7 +23,6 @@
         <div class="sec bg-black">
             <div class="content dev_content">
                 <h1 class="dev_title tac c-active">发展历程</h1>
-
                 <div class="dev_section" v-if="devList.length > 0">
                     <i class="line"></i>
                     <span class="pre_btn" @click.stop="handlerClick(1)"></span>
@@ -30,9 +30,9 @@
                     <div class="dev_list_box">
                         <ul class="dev_list" ref="swiperList" :style="{ left: swiperLeft + 'px'}">
                             <li v-for="(item,index) in devList" :key="index">
-                                <p class="time tac">{{item.year}}</p>
+                                <p class="time tac">{{item.devYear}}</p>
                                 <span class="dot"></span>
-                                <div class="words">{{item.content}}</div>
+                                <div class="words">{{item.devText}}</div>
                             </li>
                         </ul>
                     </div>
@@ -53,6 +53,7 @@
         },
         data() {
             return {
+                companyInfo:{},
                 devList: [
                     {
                         year: '2014',
@@ -97,9 +98,18 @@
         },
         mounted() {
             this.itemWitch = this.$refs.swiperList.offsetWidth / this.devList.length;
+            this.getPageData();
         },
         methods: {
+            getPageData(){
+                this.$http.get('/about/aboutCompany',{},(res)=>{
+                    console.log(res);
+                    this.devList = res.companyDevList || [];
+                    this.companyInfo = res.companyInfo ||{};
+                })
+            },
 
+            // 左右切换
             handlerClick(type) {
                 if (this.isGoing || this.devList.length <= 4) {
                     return;
@@ -130,7 +140,12 @@
         }
     }
 </script>
-
+<style>
+    .intro_left>p{
+        font-size:18px;
+        text-indent:2em;
+    }
+</style>
 <style lang="less" scoped>
     @import "../../less/common";
 
@@ -144,7 +159,8 @@
                 width: 100%;
                 .intro_left {
                     width: 770px;
-                    p {
+                    font-size:18px;
+                    >p {
                         font-size: 18px;
                         color: @c-28;
                         text-indent: 2em;
@@ -273,11 +289,11 @@
                     display: inline-block;
                     margin-right: 60px;
                     text-align: center;
+                    vertical-align: top;
                     p.time {
                         font-size: 24px;
                         width: 200px;
                     }
-
                     span.dot {
                         margin-top: 25px;
                         display: inline-block;

@@ -17,8 +17,7 @@
                 pagedata:{
                     bg_words:'ABOUT',
                     title_words:'关于我们',
-                    title_info:'驭风者影业以“驭风者，皓月当空；任驰骋，万里江山；一切尽在股掌！”为企业之魂，坚持以彰显湖湘精神，推动中国文化产业驭风者影业以“驭风者，皓月当空；任驰骋，万里江山；一切尽在股掌！”为企业之魂，坚持以彰显湖湘精神，推动中国文化产业',
-                    page_url:[ '关于我们','企业文化'],
+                    title_info:'驭风者影视广告合作、演艺演出、艺人合作、宣发合作相关资讯。',
                     page_sec: [
                         {
                             nor_img:require('../../assets/nor_advertisement.png'),

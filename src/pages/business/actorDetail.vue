@@ -3,7 +3,7 @@
         <div class="content">
             <div class="actor_info">
                 <div class="actor_img_item">
-                    <img src="../../assets/2.png" alt="">
+                    <img :src="actorDetail.actorImg" alt="">
                 </div>
                 <div class="actor_info_cell">
                     <h2>{{actorDetail.name}}</h2>
@@ -51,7 +51,6 @@
                 this.$http.get('/business/actorDetail',{
                     id:this.actorId
                 },(res)=>{
-                    console.log(res)
                     this.actorDetail = res.actorInfo || {};
                     this.list = res.list || [];
                 })

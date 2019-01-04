@@ -1,12 +1,10 @@
 <template>
     <div class="sec">
         <div class="content">
-            <normal-detail :title="detail.title" :time="detail.time">
-                <!--<video-play slot="video" :video-type="" :video-img="" :video-url="" :show-video="true"  ></video-play>-->
-                <img src="../../assets/1.png" class="detail_img" slot="img" alt="">
+            <normal-detail :title="detail.title" :time="detail.time" >
                 <img src="../../assets/1.png" class="detail_img" slot="img" alt="">
                 <div slot="html" class="detail_info">
-                    <p>爱上了的框架发生的浪费卡卡是砥砺奋进阿的说法</p>
+                    <p>爱上了的框架发生的浪费卡卡是砥砺奋进阿的说法爱上了的框架发生的浪费卡卡是砥砺奋进阿的说法爱上了的框架发生的浪费卡卡是砥砺奋进阿的说法爱上了的框架发生的浪费卡卡是砥砺奋进阿的说法爱上了的框架发生的浪费卡卡是砥砺奋进阿的说法</p>
                 </div>
             </normal-detail>
         </div>
@@ -15,13 +13,10 @@
 
 <script>
     import normalDetail from '../../components/normalDetail'
-    import videoPlay from '../../components/videoPlay'
-
     export default {
-        name: "works-detail",
-        components: {
-            normalDetail,
-            videoPlay
+        name: "about-dec-detail",
+        components:{
+            normalDetail
         },
         data(){
             return {
@@ -35,7 +30,7 @@
             this.detailId = this.$route.query.id || ''
         },
         methods: {
-            //获取作品信息
+            //获取宣发信息
             getDetail() {
                 this.$http.get('', {
                     id: this.detailId
@@ -43,32 +38,20 @@
                     console.log(res);
 
                 },(err)=>{
-                    let errMsg =  err.msg ? err.msg : '该作品不存在';
+                    let errMsg =  err.msg ? err.msg : '系统异常';
                     alert(errMsg);
                 })
             }
 
         }
-
     }
 </script>
 
 <style lang="less" scoped>
     @import "../../less/common.less";
-
-    .content {
-        padding: 45px 0;
-    }
-    .detail_info {
-        font-size: 18px;
-        line-height: 32px;
-        white-space: normal;
-        text-align: left;
-    }
-    .detail_img {
-        width: 100%;
-        height: auto;
-        margin: 40px 0;
-        display: block;
+    .content{
+        padding:45px 0;
     }
 </style>
+
+

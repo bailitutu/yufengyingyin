@@ -33,15 +33,16 @@
         data() {
             return {
                 pageSecList: [],
-                pagePosition:[]
+                pagePosition: []
             }
         },
-        mounted(){
+
+        mounted() {
             // 设置子路由状态
             if (this.pageData.page_sec && this.pageData.page_sec.length > 0) {
                 let arr = this.pageData.page_sec;
                 this.pageSecList = arr.map((cell) => {
-                    if ( cell.routerUrl == this.$route.matched[1].path  ) { //保持页面刷新时，路由组件状态不变
+                    if (cell.routerUrl == this.$route.matched[1].path) { //保持页面刷新时，路由组件状态不变
                         cell.active = true
                     } else {
                         cell.active = false;
@@ -50,12 +51,13 @@
                 })
             }
             this.setPagePostion();
+
         },
         methods: {
             // 设置页面导航路径
-            setPagePostion(){
-                if( this.$route.matched && this.$route.matched.length > 0){
-                    this.pagePosition = this.$route.matched.map((cell)=>{
+            setPagePostion() {
+                if (this.$route.matched && this.$route.matched.length > 0) {
+                    this.pagePosition = this.$route.matched.map((cell) => {
                         return cell.name
                     })
                 }
@@ -63,11 +65,11 @@
 
             // 切换子页面版块
             checkSec(item) {
-                this.$router.push({path: item.routerUrl});
+                this.$router.push({path: item.routerUrl, query: {id: item.id}});
                 this.pageSecList = this.pageSecList.map((cell) => {
                     if (cell.title == item.title) {
                         cell.active = true;
-                    }else{
+                    } else {
                         cell.active = false;
                     }
                     return cell

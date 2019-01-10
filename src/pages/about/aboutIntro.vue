@@ -2,19 +2,12 @@
     <div>
         <div class="sec bg-white">
             <div class="content">
-                <section-title text="企业简介"></section-title>
+                <section-title text="企业介绍"></section-title>
                 <div class="intro_item">
-                    <div class="intro_left fl" v-html="companyInfo.companyTextHtml">
-
-                        <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
-                            者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
-                        <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
-                            者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
-                        <p> 湖南驭风者影视文化传媒有限公司座落于中国娱乐之都，美丽星城---长沙，驭风者影业一直 秉承湖湘文化的心忧天下、厚德致远、脚踏实地、敢为人先的精神。身处中国娱乐创新之地的驭风
-                            者影业，在响应国家文化产业政策引导的前提下，深入了解市场需求，不断探索产业发展的创新之 路。</p>
+                    <div class="intro_left fl" v-html="companyInfo.content">
                     </div>
                     <div class="intro_right fl">
-                        <img :src="companyInfo.companyImg" class="w-f h-f" alt="">
+                        <img :src="companyInfo.imgs" class="w-f h-f" alt="">
                     </div>
                 </div>
 
@@ -30,9 +23,9 @@
                     <div class="dev_list_box">
                         <ul class="dev_list" ref="swiperList" :style="{ left: swiperLeft + 'px'}">
                             <li v-for="(item,index) in devList" :key="index">
-                                <p class="time tac">{{item.devYear}}</p>
+                                <p class="time tac">{{item.year}}</p>
                                 <span class="dot"></span>
-                                <div class="words">{{item.devText}}</div>
+                                <div class="words">{{item.desc}}</div>
                             </li>
                         </ul>
                     </div>
@@ -54,41 +47,7 @@
         data() {
             return {
                 companyInfo:{},
-                devList: [
-                    {
-                        year: '2014',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                    {
-                        year: '2014',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                    {
-                        year: '2014',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-
-                    {
-                        year: '2014',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                    {
-                        year: '2015',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                    {
-                        year: '2016',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                    {
-                        year: '2017',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                    {
-                        year: '2018',
-                        content: '驭风者影业以“驭风者， 皓月当空；任驰骋，万 里江山；一切尽在股掌 ！”为企业之魂，坚持以 彰显湖湘精神，推动中 国文化产业发展为已任， 立志为产业的发展翻开一 页新篇章。'
-                    },
-                ],
+                devList: [],
                 itemWitch: 0,
                 swiperLeft: 0,
                 lastIndex: 0, //最前面的下标
@@ -96,16 +55,23 @@
             }
 
         },
+
         mounted() {
-            this.itemWitch = this.$refs.swiperList.offsetWidth / this.devList.length;
             this.getPageData();
+        },
+        updated(){
+            this.$nextTick(()=>{
+                this.itemWitch = this.$refs ? this.$refs.swiperList.clientWidth  / this.devList.length : 0;
+            })
         },
         methods: {
             getPageData(){
-                this.$http.get('/about/aboutCompany',{},(res)=>{
+                this.$http.get('/Home/Api/get_company_info',{},(res)=>{
                     console.log(res);
-                    this.devList = res.companyDevList || [];
-                    this.companyInfo = res.companyInfo ||{};
+                    this.companyInfo = res ||{};
+                    this.devList = res.licheng || [];
+
+                    return;
                 })
             },
 

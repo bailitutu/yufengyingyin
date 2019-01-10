@@ -27,9 +27,13 @@
         methods:{
             // 获取页面数据
             getPageData(){
-                this.$http.get('/news/companyNews',{
-                    newsClassificationId:1
+                this.$http.get('/Home/Api/get_news_lists',{
+                    cat_id:1,
+                    page:1,
+                    perpage:9999
                 },(res)=>{
+                    console.log(res)
+                    return;
                     this.listInfo = res.list.map((item)=>{
                         item.title = item.newsTitle;
                         item.img = item.newsImg;

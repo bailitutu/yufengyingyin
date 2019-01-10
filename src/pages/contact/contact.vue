@@ -26,12 +26,17 @@
             }
         },
         mounted(){
-            this.pageInit();
+            this.getData();
         },
         methods:{
-            pageInit(){
-                this.$http.get('/home/homeInfo',{},(res)=>{
-                    this.companyData = res.companyInfo;
+            getData(){
+                this.$http.get('/Home/Api/get_configs',{},(res)=>{
+                    let company  = {};
+                    company.companyAddress = res.configs.webaddr || '';
+                    company.companyName = res.configs.webname || '';
+                    company.companyPhone = res.configs.webtel || '';
+                    company.companyEmail = res.configs.webemail || '';
+                    this.companyData = company
                 })
             }
         }

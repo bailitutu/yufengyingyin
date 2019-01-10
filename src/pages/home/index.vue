@@ -2,10 +2,10 @@
     <div>
         <div class="sec banner-sec">
             <div class="img_item">
-                <img :src="pageInfo.bgImg" class="w-f h-f" alt="">
+                <img :src="bgImg" class="w-f h-f" alt="">
             </div>
             <div class="content banner-content bg-white">
-                <p class="fl" v-if="pageInfo.companyInfo">{{pageInfo.companyInfo.companyPhone}}</p>
+                <p class="fl" v-if="pageInfo">{{pageInfo.webtel}}</p>
                 <button class="more_btn fr bg-white" @click.stop="goPage('/about')">MORE>></button>
             </div>
         </div>
@@ -17,21 +17,21 @@
                 </div>
                 <ul class="culture_list">
                     <li>
-                        <img src="../../assets/2.png" class="w-f h-f" alt="">
+                        <img :src="index_culture_0" class="w-f h-f" alt="">
                         <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
                             <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
                         </div>
                     </li>
                     <li>
-                        <img src="../../assets/3.png" class="w-f h-f" alt="">
+                        <img :src="index_culture_1" class="w-f h-f" alt="">
                         <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
                             <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
                         </div>
                     </li>
                     <li>
-                        <img src="../../assets/4.png" class="w-f h-f" alt="">
+                        <img :src="index_culture_2" class="w-f h-f" alt="">
                         <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
                             <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
@@ -57,42 +57,42 @@
                         <h1>新闻中心</h1>
                         <p>News Center</p>
                     </div>
-                    <ul class="news_list" v-if="pageInfo.newList">
-                        <li class="c-white" v-for=" (news,n) in pageInfo.newList" :key="n" @click.stop="goPage('newsDetail',{ id : news.id})">
-                            <div class="news_info one_raw">{{ news.newsTitle}}</div>
-                            <span>{{news.createTime}}</span>
+                    <ul class="news_list" v-if="newsList">
+                        <li class="c-white" v-for=" (news,n) in newsList" :key="n" @click.stop="goPage('newsDetail',{ id : news.id})">
+                            <div class="news_info one_raw">{{ news.title}}</div>
+                            <span>{{news.uptime}}</span>
                         </li>
                     </ul>
                 </div>
 
             </div>
         </div>
-        <div class="sec bg-white">
+        <div class="sec bg-white" v-if="workList && workList.length > 0">
             <div class="content works_content">
                 <div class="works_title">
                     <button class="more_work bg-black c-white" @click.stop="goPage('/works')">READ MORE</button>
                 </div>
                 <ul class="works_list">
-                    <li  v-for="( works,w) in pageInfo.workList" :key="w" @click.stop="goPage( '/worksDetail', { id: works.id} )">
+                    <li  v-for="( works,w) in workList" :key="w" @click.stop="goPage( '/worksDetail', { id: works.id} )">
                         <div class="work_cell">
-                            <img :src="works.newsImg" class="" alt="">
-                            <h4 class="c-28 tal one_raw">{{works.newsTitle}}</h4>
-                            <p class="c-6E tal one_raw">{{works.newsText}}</p>
+                            <img :src="works.imgs  " class="" alt="">
+                            <h4 class="c-28 tal one_raw">{{works.title}}</h4>
+                            <p class="c-6E tal one_raw">{{works.desc || '暂无描述'}}</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="sec contact_sec">
-            <div class="content contact_content" v-if="pageInfo.companyInfo">
+            <div class="content contact_content" v-if="pageInfo">
                 <div class="map_item">
-                    <create-map :address="pageInfo.companyInfo.companyAddress"></create-map>
+                    <create-map :address="pageInfo.webaddr"></create-map>
                 </div>
                 <div class="info_item" >
-                    <h3>{{pageInfo.companyInfo.companyName}}</h3>
-                    <p>联系电话：{{pageInfo.companyInfo.companyPhone}}</p>
-                    <p>企业邮箱：{{pageInfo.companyInfo.companyEmail}}</p>
-                    <p>公司地址：{{pageInfo.companyInfo.companyAddress}}</p>
+                    <h3>{{pageInfo.webname}}</h3>
+                    <p>联系电话：{{pageInfo.webtel}}</p>
+                    <p>企业邮箱：{{pageInfo.webemail}}</p>
+                    <p>公司地址：{{pageInfo.webaddr}}</p>
                 </div>
             </div>
         </div>
@@ -109,7 +109,13 @@
         },
         data(){
             return {
-                pageInfo:{},
+                bgImg:'',
+                index_culture_0:'',
+                index_culture_1:'',
+                index_culture_2:'',
+                pageInfo:{}, //主要信息
+                workList:[], //作品列表
+                newsList: [], //新闻列表
                 playerOptions:{
                     // playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
                     autoplay: false, //如果true,浏览器准备好时开始回放。
@@ -136,22 +142,37 @@
         },
         mounted(){
             this.getPageData();
+            this.getWorkData();
         },
         methods: {
             // 获取页面数据
             getPageData(){
-                this.$http.get('/home/homeInfo',{},(res)=>{
+                this.$http.get('/Home/Api/get_configs',{},(res)=>{
                     console.log(res);
-                    if(res.workList && res.workList.length > 0){
-                        res.workList = res.workList.filter((item,index) =>{ return index < 4});
-                    }
-                    this.pageInfo = res;
-                    this.playerOptions.sources[0].type = 'video/'+ res.videoInfo.videoType;
-                    this.playerOptions.sources[0].src = res.videoInfo.videoUrl;
+                    this.bgImg = 'http://www.yowind.cn'+ res.configs.web_bg_0;
+                    this.index_culture_0 = 'http://www.yowind.cn'+ res.configs.index_culture_0;
+                    this.index_culture_1 = 'http://www.yowind.cn'+ res.configs.index_culture_1;
+                    this.index_culture_2 = 'http://www.yowind.cn'+ res.configs.index_culture_2;
+                    this.pageInfo = res.configs || {};
+                    this.playerOptions.sources[0].type = 'video/'+ res.videoInfo.videoType || 'video/mp4';
+                    this.playerOptions.sources[0].src = res.configs.webvideo_url;
                     this.playerOptions.poster = res.videoInfo.poster;
+                    return;
                 })
             },
 
+            // 获取作品和新闻信息
+            getWorkData(){
+                this.$http.get('/Home/Api/get_index_infos',{},(res)=>{
+                    console.log(res);
+                    if(res.goods && res.goods.length > 0){
+                        res.goods = res.goods.filter((item,index) =>{ return index < 4});
+                        this.workList = res.goods;
+                    }
+                    this.newsList = res.news || [];
+
+                })
+            },
 
             // 跳转页面
             goPage(path, query) {

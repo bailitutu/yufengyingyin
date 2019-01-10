@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 let http = axios.create({
-    baseURL: 'http://mock.eolinker.com/CtL6GkGc7aeee69424a667b935ac3c1044573a33a4a44f2?uri=',
+    // baseURL: 'http://mock.eolinker.com/CtL6GkGc7aeee69424a667b935ac3c1044573a33a4a44f2?uri=',
+    baseURL: 'http://www.yowind.cn/index.php',
     withCredentials: false,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -25,8 +26,8 @@ function apiAxios(method, url, params, response, error) {
         params: method === 'GET' || method === 'DELETE' ? params : null,
     }).then(function (res) {
         console.log(res)
-        if (res.data && res.data.head && res.data.head.respCode == '0000000') {
-            response(res.data.body);
+        if (res.data && res.data.status == 1) {
+            response(res.data.data);
         } else {
             if (!res.data) {
                 res.data = {
@@ -34,9 +35,23 @@ function apiAxios(method, url, params, response, error) {
                 }
             }
             if (error) {
-                error(res.data.body)
+                error(res.data.data)
             }
         }
+        
+        
+        // if (res.data && res.data.head && res.data.head.respCode == '0000000') {
+        //     response(res.data.body);
+        // } else {
+        //     if (!res.data) {
+        //         res.data = {
+        //             msg: '系统出问题了！'
+        //         }
+        //     }
+        //     if (error) {
+        //         error(res.data.body)
+        //     }
+        // }
     }).catch(function (err) {
         if (!err.msg) {
             err.msg = '系统出问题了!'

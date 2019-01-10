@@ -35,7 +35,6 @@
                         item.img = item.cooperImg;
                         return item;
                     });
-
                 })
             }
         }

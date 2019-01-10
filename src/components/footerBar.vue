@@ -21,10 +21,15 @@
               recodeInfo:'湘公网安备 3204224238492829385号'
           }
         },
+        created(){
+            this.getData();
+        },
         methods:{
             getData(){
-                this.$http.get('',{},(res)=>{
-                    console.log(res)
+                this.$http.get('/Home/Api/get_configs',{},(res)=>{
+                    this.copyRight = res.configs.webcopy || '';
+                    this.infoCenter = res.configs.webicp || '';
+                    this.recodeInfo = res.configs.webpolicy || '';
                 })
             }
         }

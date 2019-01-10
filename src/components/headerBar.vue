@@ -2,7 +2,6 @@
     <header class="sec" :class=" showActive ? 'active': ''">
         <div class="content">
             <img src="../assets/logo.png" class="logo fl" alt="">
-
             <div class="menu fr">
                 <router-link class="menu_cell " :class="item.active ? 'active' : ''" @click.native="changeRouter(item)"
                              v-for="(item,index) in routerList" :key="index" :to="item.url">{{item.title}}
@@ -74,6 +73,10 @@
             this.setTopBg();
         },
         methods: {
+
+            //
+
+
             // 设置顶部导航栏背景状态
             setTopBg() {
                 let that = this;

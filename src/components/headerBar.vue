@@ -1,7 +1,7 @@
 <template>
     <header class="sec" :class=" showActive ? 'active': ''">
         <div class="content">
-            <img src="../assets/logo.png" class="logo fl" alt="">
+            <img :src="logo | urlImg" class="logo fl" alt="">
             <div class="menu fr">
                 <router-link class="menu_cell " :class="item.active ? 'active' : ''" @click.native="changeRouter(item)"
                              v-for="(item,index) in routerList" :key="index" :to="item.url">{{item.title}}
@@ -71,11 +71,19 @@
             this.setRouter();
             // 设置顶部导航栏背景状态
             this.setTopBg();
+            //获取站点logo
+            this.getLogo();
         },
         methods: {
 
-            //
-
+            //获取站点logo
+            getLogo(){
+                this.$http.get('/Home/Api/get_configs',{},(res)=>{
+                    console.log(res);
+                    this.logo = res.weblogo ;
+                    return;
+                })
+            },
 
             // 设置顶部导航栏背景状态
             setTopBg() {

@@ -4,7 +4,7 @@
             <div class="title c-28">艺人合作</div>
             <ul class="actor_list">
                 <li @click.stop="checkDetail(actor.id)" v-for="(actor,index) in list" :key="index">
-                    <img :src="actor.cooperImg" alt="">
+                    <img :src="actor.actorImg | urlImg" alt="">
                     <p class="bg-black ">{{actor.name}}</p>
                 </li>
             </ul>
@@ -22,19 +22,25 @@
             }
         },
         mounted(){
-            // this.getActorList();
+            this.getActorList();
         },
         methods:{
             // 获取艺人列表
             getActorList(){
-                this.$http.get('/business/actorList',{},(res)=>{
+                this.$http.get('/Home/Api/get_artist',{
+                    page:1,
+                    perpage:9999,
+                },(res)=>{
                     console.log(res)
-                    this.list = res.list ?  res.list : [];
+                    this.list =  res.aritist || [];
+
+                    return;
                 })
             },
             // 查看艺人详情
             checkDetail(id){
-                this.$router.push({path: '/actorDetail',query:{ actorId: id}})
+                console.log(id)
+                this.$router.push({path: '/actorDetail',query:{ id: id}})
             }
         }
 

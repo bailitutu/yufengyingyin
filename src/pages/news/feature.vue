@@ -27,8 +27,12 @@
         methods:{
             // 获取页面数据
             getPageData(){
-                this.$http.get('/news/getFeature',{},(res)=>{
-                    this.listInfo = res.list || [];
+                this.$http.get('/Home/Api/get_feature',{
+                    page:1,
+                    perpage:9999
+                },(res)=>{
+                    console.log(res);
+                    this.listInfo = res.infos || [];
                 })
             }
         }

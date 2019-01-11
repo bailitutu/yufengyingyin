@@ -33,9 +33,8 @@
                     perpage:9999,
                     cat_id: this.cat_id
                 },(res)=>{
-
-                    console.log(res)
-                    this.listInfo = res.cats;
+                    console.log(res);
+                    this.listInfo = res.agents;
                 })
             }
         }

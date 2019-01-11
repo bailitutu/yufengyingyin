@@ -65,9 +65,9 @@
                             this.page_sec[i].title = res.cats[i].title;
                         }
                     }
-                    this.page_sec = this.page_sec.filter((item,index)=>{
-                        return index < res.cats.length;
-                    });
+                    // this.page_sec = this.page_sec.filter((item,index)=>{
+                    //     return index < res.cats.length;
+                    // });
                 })
             }
         }

@@ -2,8 +2,8 @@
     <div>
         <ul class="show_list" v-if="list.length > 0">
             <li v-for="(item,index) in list" :key="index" @click.stop="playVideo(item)">
-                <img :src="item.imgUrl" alt="">
-                <p class="one_raw c-white">{{item.title}}</p>
+                <img :src="item.imgs | urlImg " alt="">
+                <p class="one_raw c-28">{{item.title}}</p>
             </li>
         </ul>
         <video-play v-if="list.length > 0" :video-type="currentType" :video-url="currentUrl" :video-img="currentImg" @closeVideo="closeVideo" :show-video="showVideo"></video-play>
@@ -39,9 +39,9 @@
             // 点击播放花絮视频
             playVideo(item){
                 console.log(item)
-                this.currentImg = item.imgUrl;
-                this.currentType = item.videoType;
-                this.currentUrl = item.videoUrl;
+                this.currentImg = item.imgs;
+                this.currentType = item.vtype;
+                this.currentUrl =  item.content;
                 this.showVideo = true;
             },
             // 关闭视频

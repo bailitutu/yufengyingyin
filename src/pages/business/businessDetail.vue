@@ -37,7 +37,7 @@
                 this.$http.get('/Home/Api/get_agents_content', {
                     id: this.detailId
                 }, (res) => {
-                    console.log(res)
+                    console.log(res);
                     this.detail = res || {};
                 },(err)=>{
                     let errMsg =  err.msg ? err.msg : '该合作不存在';

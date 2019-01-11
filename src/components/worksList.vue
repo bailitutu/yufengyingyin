@@ -1,15 +1,15 @@
 <template>
     <div class="works_item">
-        <div class="works_recommend" v-if="commondList.length == 3">
+        <div class="works_recommend" v-if="commondList.length > 0">
             <div class="rec_left fl"  @click.stop="checkDetail(commondList[0].id )">
-                <img :src="commondList[0].newsBigImg" class="w-f h-f" alt="">
+                <img :src="commondList[0].imgs2 | urlImg" class="w-f h-f" alt="">
             </div>
             <div class="rec_right fl">
-                <div class="rec_cell"  @click.stop="checkDetail(commondList[1].id )">
-                    <img :src="commondList[1].newsBigImg"  class="w-f h-f" alt="">
+                <div class="rec_cell" v-if="commondList.length >= 2 "  @click.stop="checkDetail(commondList[1].id )">
+                    <img :src="commondList[1].imgs2 | urlImg"  class="w-f h-f" alt="">
                 </div>
-                <div class="rec_cell"  @click.stop="checkDetail(commondList[2].id )">
-                    <img :src="commondList[2].newsBigImg"  class="w-f h-f"  alt="">
+                <div class="rec_cell"  v-if="commondList.length >= 3 "   @click.stop="checkDetail(commondList[2].id )">
+                    <img :src="commondList[2].imgs2 | urlImg"  class="w-f h-f"  alt="">
                 </div>
             </div>
         </div>
@@ -44,6 +44,7 @@
         },
         watch:{
             list(val,oldVal){
+                console.log(val)
                 if( val && val.length > 0){
                     this.commondList = val.filter((item,index)=>{
                         return index < 3;
@@ -57,6 +58,7 @@
         methods:{
             //查看作品详情
             checkDetail(id){
+                console.log(id)
                 this.$router.push({path: '/worksDetail', query: { id: id}})
             }
         }

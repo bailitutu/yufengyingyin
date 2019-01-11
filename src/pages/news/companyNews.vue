@@ -22,6 +22,7 @@
           }
         },
         mounted(){
+            this.cats_id = this.$route.query.id || '1'
             this.getPageData();
         },
         methods:{
@@ -33,12 +34,8 @@
                     perpage:9999
                 },(res)=>{
                     console.log(res)
+                    this.listInfo = res.news || [];
                     return;
-                    this.listInfo = res.list.map((item)=>{
-                        item.title = item.newsTitle;
-                        item.img = item.newsImg;
-                        return item;
-                    });
                 })
             }
         }

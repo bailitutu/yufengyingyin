@@ -18,24 +18,24 @@
                 <ul class="culture_list">
                     <li>
                         <img :src="pageInfo.index_culture_0 | urlImg" class="w-f h-f" alt="">
-                        <div class="culture_cell bg-black c-white">
-                            <h4>使命</h4>
-                            <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
-                        </div>
+                        <!--<div class="culture_cell bg-black c-white">-->
+                            <!--<h4>使命</h4>-->
+                            <!--&lt;!&ndash;<div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>&ndash;&gt;-->
+                        <!--</div>-->
                     </li>
                     <li>
                         <img :src="pageInfo.index_culture_1 | urlImg" class="w-f h-f" alt="">
-                        <div class="culture_cell bg-black c-white">
-                            <h4>使命</h4>
-                            <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
-                        </div>
+                        <!--<div class="culture_cell bg-black c-white">-->
+                            <!--<h4>使命</h4>-->
+                            <!--&lt;!&ndash;<div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>&ndash;&gt;-->
+                        <!--</div>-->
                     </li>
                     <li>
                         <img :src="pageInfo.index_culture_2 | urlImg" class="w-f h-f" alt="">
-                        <div class="culture_cell bg-black c-white">
+                    <!--    <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
-                            <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
-                        </div>
+                            &lt;!&ndash;<div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>&ndash;&gt;
+                        </div>-->
                     </li>
                 </ul>
             </div>
@@ -75,7 +75,7 @@
                 <ul class="works_list">
                     <li  v-for="( works,w) in workList" :key="w" @click.stop="goPage( '/worksDetail', { id: works.id} )">
                         <div class="work_cell">
-                            <img :src="works.imgs  " class="" alt="">
+                            <img :src="works.imgs | urlImg " class="" alt="">
                             <h4 class="c-28 tal one_raw">{{works.title}}</h4>
                             <p class="c-6E tal one_raw">{{works.desc || '暂无描述'}}</p>
                         </div>
@@ -151,9 +151,10 @@
                     console.log(res);
                     this.bgImg = res.configs.web_bg_0;
                     this.pageInfo = res.configs || {};
-                    this.playerOptions.sources[0].type = 'video/'+ res.videoInfo.videoType || 'video/mp4';
-                    this.playerOptions.sources[0].src = res.configs.webvideo_url;
-                    this.playerOptions.poster = res.videoInfo.poster;
+                    this.playerOptions.sources[0].type = 'video/mp4';
+                    this.playerOptions.sources[0].src = 'http://www.yowind.cn'+ res.configs.webvideo_url;
+                    console.log(this.playerOptions)
+                    // this.playerOptions.poster = res.videoInfo.poster;
                     return;
                 })
             },
@@ -167,7 +168,6 @@
                         this.workList = res.goods;
                     }
                     this.newsList = res.news || [];
-
                 })
             },
 

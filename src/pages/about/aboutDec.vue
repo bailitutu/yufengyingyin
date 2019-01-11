@@ -28,15 +28,12 @@
         methods:{
             // 获取页面数据
             getPageData(){
-                this.$http.get('/about/aboutDec',{
-                    newsClassificationId:3
+                this.$http.get('/Home/Api/get_partner',{
+                    page:1,
+                    perpage:9999
                 },(res)=>{
-                    this.listInfo = res.list.map((item)=>{
-                        item.title = item.operName;
-                        item.img = item.mapImg;
-                        return item;
-                    });
-
+                    console.log(res)
+                    this.listInfo = res.partners || []
                 })
             }
         }

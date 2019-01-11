@@ -3,7 +3,7 @@
         <div class="content">
             <div class="actor_info">
                 <div class="actor_img_item">
-                    <img :src="actorDetail.actorImg" alt="">
+                    <img :src="actorDetail.actorImg | urlImg" alt="">
                 </div>
                 <div class="actor_info_cell">
                     <h2>{{actorDetail.name}}</h2>
@@ -21,8 +21,8 @@
                 <p class="c-28">代表作品</p>
                 <ul class="actor_work_list">
                     <li v-for="(works,index) in list" :key="index">
-                        <img :src="works.imgWork" alt="">
-                        <p class="tac c-28 one_raw">《{{ works.titleWork}}》</p>
+                        <img :src="works.imgs | urlImg" alt="">
+                        <p class="tac c-28 one_raw">《{{ works.title}}》</p>
                     </li>
 
                 </ul>
@@ -42,19 +42,18 @@
             }
         },
         mounted(){
-            // this.getDetail();
-            this.actorId = this.$route.query.id || ''
+            this.actorId = this.$route.query.id || '';
+            this.getDetail();
         },
         methods:{
             //获取艺人详细信息
             getDetail(){
-                this.$http.get('/business/actorDetail',{
+                this.$http.get('/Home/Api/get_artist_content',{
                     id:this.actorId
                 },(res)=>{
-                    this.actorDetail = res.actorInfo || {};
-                    this.list = res.list || [];
+                    this.actorDetail = res || {};
+                    this.list = res.goods || [];
                 })
-
             }
         }
     }
@@ -99,6 +98,7 @@
                 img{
                     width: 300px;
                     height: 400px;
+                    border:1px solid #f4f4f4;
                     position: absolute;
                     top:21px;
                     left:50%;

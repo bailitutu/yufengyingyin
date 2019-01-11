@@ -2,7 +2,7 @@
     <div class="sec">
         <div class="content">
             <section-title text="演艺演出"></section-title>
-            <three-card :list="listInfo" detail-url="/newsDetail"></three-card>
+            <three-card :list="listInfo" detail-url="/businessDetail"></three-card>
         </div>
     </div>
 </template>
@@ -34,7 +34,7 @@
                     cat_id: this.cat_id
                 },(res)=>{
                     console.log(res)
-                    this.listInfo = res.cats || [];
+                    this.listInfo = res.agents || [];
                     return;
                 })
             }

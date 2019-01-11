@@ -22,21 +22,20 @@
             }
         },
         mounted(){
+            this.cats_id = this.$route.query.id || '2'
             this.getPageData();
         },
         methods:{
             // 获取页面数据
             getPageData(){
-                this.$http.get('/news/companyNews',{
-                    newsClassificationId:2
+                this.$http.get('/Home/Api/get_news_lists',{
+                    cat_id:1,
+                    page:1,
+                    perpage:9999
                 },(res)=>{
-                    this.listInfo = res.list.map((item)=>{
-                        console.log(item)
-                        item.title = item.newsTitle;
-                        item.img = item.newsImg;
-                        return item;
-                    });
-
+                    console.log(res)
+                    this.listInfo = res.news || [];
+                    return;
                 })
             }
         }

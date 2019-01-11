@@ -48,13 +48,14 @@
         },
         watch:{
             videoType(){
+                console.log(this.videoType)
                 this.playerOptions.sources[0].type = 'video/'+ this.videoType;
             },
             videoUrl(){
-                this.playerOptions.sources[0].src = this.videoUrl;
+                this.playerOptions.sources[0].src = 'http://www.yowind.cn'+ this.videoUrl;
             },
             videoImg(){
-                this.playerOptions.poster = this.videoImg;
+                this.playerOptions.poster = this.videoImg || '';
             }
         },
         methods:{

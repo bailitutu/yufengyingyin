@@ -1,7 +1,7 @@
 <template>
     <div class="sec">
         <div class="content">
-            <normal-detail :title="detail.title" :time="detail.time">
+            <normal-detail :title="detail.title" :time="detail.uptime">
                 <img :src="detail.imgs" class="detail_img" slot="img" alt="">
                 <div slot="html" class="detail_info" v-html="detail.content" >
                 </div>
@@ -23,8 +23,8 @@
         data(){
             return {
                 detail:{
-                    title:'复仇者联盟',
-                    time:'2018-09-09 12:00:00',
+                    title:'',
+                    time:'',
                 }
             }
         },
@@ -35,7 +35,7 @@
         methods: {
             //获取作品信息
             getDetail() {
-                this.$http.get('get_goods_content', {
+                this.$http.get('/Home/Api/get_goods_content', {
                     id: this.detailId
                 }, (res) => {
                     this.detail = res || {}

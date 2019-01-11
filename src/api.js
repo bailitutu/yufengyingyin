@@ -25,33 +25,9 @@ function apiAxios(method, url, params, response, error) {
         data: method === 'POST' || method === 'PUT' ? params : null,
         params: method === 'GET' || method === 'DELETE' ? params : null,
     }).then(function (res) {
-        console.log(res)
         if (res.data && res.data.status == 1) {
             response(res.data.data);
-        } else {
-            if (!res.data) {
-                res.data = {
-                    msg: '系统出问题了！'
-                }
-            }
-            if (error) {
-                error(res.data.data)
-            }
         }
-        
-        
-        // if (res.data && res.data.head && res.data.head.respCode == '0000000') {
-        //     response(res.data.body);
-        // } else {
-        //     if (!res.data) {
-        //         res.data = {
-        //             msg: '系统出问题了！'
-        //         }
-        //     }
-        //     if (error) {
-        //         error(res.data.body)
-        //     }
-        // }
     }).catch(function (err) {
         if (!err.msg) {
             err.msg = '系统出问题了!'
@@ -59,7 +35,7 @@ function apiAxios(method, url, params, response, error) {
         if (error) {
             error(err)
         }else{
-            alert( '系统出问题了!')
+            // alert( '系统出问题了!')
         }
     })
 }

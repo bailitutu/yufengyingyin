@@ -2,7 +2,7 @@
     <div>
         <div class="sec banner-sec">
             <div class="img_item">
-                <img :src="bgImg" class="w-f h-f" alt="">
+                <img :src="bgImg | urlImg" class="w-f h-f" alt="">
             </div>
             <div class="content banner-content bg-white">
                 <p class="fl" v-if="pageInfo">{{pageInfo.webtel}}</p>
@@ -17,21 +17,21 @@
                 </div>
                 <ul class="culture_list">
                     <li>
-                        <img :src="index_culture_0" class="w-f h-f" alt="">
+                        <img :src="pageInfo.index_culture_0 | urlImg" class="w-f h-f" alt="">
                         <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
                             <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
                         </div>
                     </li>
                     <li>
-                        <img :src="index_culture_1" class="w-f h-f" alt="">
+                        <img :src="pageInfo.index_culture_1 | urlImg" class="w-f h-f" alt="">
                         <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
                             <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
                         </div>
                     </li>
                     <li>
-                        <img :src="index_culture_2" class="w-f h-f" alt="">
+                        <img :src="pageInfo.index_culture_2 | urlImg" class="w-f h-f" alt="">
                         <div class="culture_cell bg-black c-white">
                             <h4>使命</h4>
                             <div class="two_row">以“爱情美剧”品牌（Brand）为灵魂；以富有活力（Energy） 的创意统领营销全程；以观众……..</div>
@@ -149,10 +149,7 @@
             getPageData(){
                 this.$http.get('/Home/Api/get_configs',{},(res)=>{
                     console.log(res);
-                    this.bgImg = 'http://www.yowind.cn'+ res.configs.web_bg_0;
-                    this.index_culture_0 = 'http://www.yowind.cn'+ res.configs.index_culture_0;
-                    this.index_culture_1 = 'http://www.yowind.cn'+ res.configs.index_culture_1;
-                    this.index_culture_2 = 'http://www.yowind.cn'+ res.configs.index_culture_2;
+                    this.bgImg = res.configs.web_bg_0;
                     this.pageInfo = res.configs || {};
                     this.playerOptions.sources[0].type = 'video/'+ res.videoInfo.videoType || 'video/mp4';
                     this.playerOptions.sources[0].src = res.configs.webvideo_url;

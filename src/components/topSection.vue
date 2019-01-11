@@ -29,7 +29,7 @@
 <script>
     export default {
         name: "top-section",
-        props: ['pageData'],
+        props: ['pageData','pageList'],
         data() {
             return {
                 pageSecList: [],
@@ -39,9 +39,8 @@
 
         mounted() {
             // 设置子路由状态
-            if (this.pageData.page_sec && this.pageData.page_sec.length > 0) {
-                let arr = this.pageData.page_sec;
-                this.pageSecList = arr.map((cell) => {
+            if (this.page_sec && this.page_sec.length > 0) {
+                this.pageSecList = this.page_sec.map((cell) => {
                     if (cell.routerUrl == this.$route.matched[1].path) { //保持页面刷新时，路由组件状态不变
                         cell.active = true
                     } else {

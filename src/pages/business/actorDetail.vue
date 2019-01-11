@@ -42,7 +42,7 @@
             }
         },
         mounted(){
-            this.getDetail();
+            // this.getDetail();
             this.actorId = this.$route.query.id || ''
         },
         methods:{

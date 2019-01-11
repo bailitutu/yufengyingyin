@@ -22,7 +22,7 @@
             }
         },
         mounted(){
-            this.getActorList();
+            // this.getActorList();
         },
         methods:{
             // 获取艺人列表

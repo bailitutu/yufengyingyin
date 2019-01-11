@@ -28,8 +28,9 @@
         methods:{
             // 获取作品信息列表
             getData(){
-                this.$http.get( '/works/workList',{
-                    newsClassificationId:'3'
+                this.$http.get( '/Home/Api/get_goods_lists',{
+                    page:1,
+                    perpage:9999
                 },(res)=>{
                     this.listInfo = res.list || []
                 })

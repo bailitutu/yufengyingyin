@@ -17,6 +17,7 @@ import business from '@/pages/business/business';
 import advertisement from '@/pages/business/advertisement';
 import dispersing from '@/pages/business/dispersing';
 import show from '@/pages/business/show';
+import businessDetail from '@/pages/business/businessDetail';
 import actor from '@/pages/business/actor';
 import actorDetail from '@/pages/business/actorDetail';
 import works from '@/pages/works/works';
@@ -25,6 +26,8 @@ import theatreWorks from '@/pages/works/theatreWorks';
 import otherWorks from '@/pages/works/otherWorks';
 import worksDetail from '@/pages/works/worksDetail';
 import activity from '@/pages/activity/activity';
+import activeList from '@/pages/activity/activeList';
+import activeDetail from '@/pages/activity/activeDetail';
 import contact from '@/pages/contact/contact';
 
 
@@ -157,13 +160,32 @@ export default new Router({
                     name: '宣发合作',
                     component: dispersing
                 },
+                {
+                    path: '/businessDetail',
+                    name: '合作详情',
+                    component: businessDetail
+                },
             ]
         },
         {
             path: '/activity',
             name: '最新活动',
-            component: activity
-        }, {
+            component: activity,
+            redirect:'/activeList',
+            children: [
+                {
+                    path: '/activeList',
+                    name: '活动列表',
+                    component: activeList
+                },
+                {
+                    path: '/activeDetail',
+                    name: '活动详情',
+                    component: activeDetail
+                },
+            ]
+        },
+        {
             path: '/contact',
             name: '联系我们',
             component: contact

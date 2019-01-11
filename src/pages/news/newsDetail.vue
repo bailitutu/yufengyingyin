@@ -39,10 +39,8 @@
                 }, (res) => {
                     console.log(res);
                     this.detail = res || {};
-                    return;
-
                 },(err)=>{
-                    let errMsg =  err.msg ? err.msg : '该作品不存在';
+                    let errMsg =  err.msg ? err.msg : '该新闻不存在';
                     alert(errMsg);
                 })
             }

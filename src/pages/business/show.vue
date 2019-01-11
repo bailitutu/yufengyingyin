@@ -2,7 +2,7 @@
     <div class="sec">
         <div class="content">
             <section-title text="演艺演出"></section-title>
-            <three-card :list="listInfo" ></three-card>
+            <three-card :list="listInfo" detail-url="/newsDetail"></three-card>
         </div>
     </div>
 </template>
@@ -22,20 +22,20 @@
             }
         },
         mounted(){
+            this.cat_id = this.$route.query.id || '2';
             this.getPageData();
         },
         methods:{
             // 获取页面数据
             getPageData(){
-                this.$http.get('/business/businessList',{
-                    cooperClassificationId:3
+                this.$http.get('/Home/Api/get_agents_lists',{
+                    page:1,
+                    perpage:9999,
+                    cat_id: this.cat_id
                 },(res)=>{
-                    this.listInfo = res.list.map((item)=>{
-                        item.title = item.cooperTitle;
-                        item.img = item.cooperImg;
-                        return item;
-                    });
-
+                    console.log(res)
+                    this.listInfo = res.cats || [];
+                    return;
                 })
             }
         }

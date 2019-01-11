@@ -10,9 +10,18 @@ import 'lib-flexible/flexible'
 
 import Api from './api.js'
 
-Vue.prototype.$http = Api
-Vue.use(VueVideoPlayer)
-Vue.config.productionTip = false
+Vue.prototype.$http = Api;
+Vue.use(VueVideoPlayer);
+
+import myFilter from './filter'
+
+
+for (let key in myFilter) {
+    Vue.filter(key, myFilter[key])
+}
+
+
+Vue.config.productionTip = false;
 
 new Vue({
   el: '#app',

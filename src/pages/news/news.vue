@@ -1,6 +1,6 @@
 <template>
     <div>
-        <top-section  :pageData="pagedata" ></top-section>
+        <top-section  :page-data="pagedata" :page-list="page_sec" ></top-section>
         <router-view/>
     </div>
 </template>
@@ -48,7 +48,6 @@
                     bg_words:'NEWS',
                     title_words:'新闻中心',
                     title_info:'最新行业动态、票房数据、影评信息、影视项目资讯、驭风者影视重要信息、相关影视项目彩蛋花絮、剧照视频等资讯。',
-                    page_sec: [ ]
                 }
             }
         },
@@ -61,7 +60,6 @@
                 this.$http.get('/Home/Api/get_info_category',{
                     ptype:0
                 },(res)=>{
-                    console.log(res);
                     if(res.cats && res.cats.length > 0){
                         for( let i = 0;i< res.cats.length;i++){
                             this.page_sec[i].title = res.cats[i].title;
@@ -70,8 +68,6 @@
                     this.page_sec = this.page_sec.filter((item,index)=>{
                         return index < res.cats.length;
                     });
-                    this.pagedata.page_sec = this.page_sec;
-                    console.log(this.pagedata)
                 })
             }
         }

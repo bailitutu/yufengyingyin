@@ -15,7 +15,7 @@
         </div>
         <ul class="works_list" v-if="worksList.length> 0">
             <li v-for="(works,index) in worksList" :key="index" @click.stop="checkDetail(works.id )" >
-                <img :src="works.newsImg"  class="w-f h-f"  alt="">
+                <img :src="works.imgs | urlImg"  class="w-f h-f"  alt="">
             </li>
         </ul>
         <blank-page v-if="list.length === 0 "></blank-page>

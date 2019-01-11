@@ -3,8 +3,7 @@
         <div class="content" v-if="detail">
             <normal-detail :title="detail.title" :time="detail.uptime" >
                 <img :src="detail.imgs" class="detail_img" slot="img" alt="">
-                <div slot="html" class="detail_info" v-html="detail.content" >
-                </div>
+                <div slot="html" class="detail_info" v-html="detail.content" > </div>
             </normal-detail>
         </div>
     </div>
@@ -57,6 +56,7 @@
         padding:45px 0;
         .detail_info{
             font-size:18px;
+            text-align: center;
         }
     }
 </style>

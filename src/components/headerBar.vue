@@ -17,6 +17,7 @@
         name: "header-bar",
         data() {
             return {
+                logo:'',
                 showActive: false,
                 routerList: [
                     {
@@ -79,8 +80,7 @@
             //获取站点logo
             getLogo(){
                 this.$http.get('/Home/Api/get_configs',{},(res)=>{
-                    console.log(res);
-                    this.logo = res.weblogo ;
+                    this.logo = res.configs.weblogo ;
                     return;
                 })
             },

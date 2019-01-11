@@ -4,11 +4,7 @@
         <p class="c-b0 detail_time tac">{{ time }}</p>
         <slot name="img" ></slot>
         <slot name="text" ></slot>
-        <slot name="video" ></slot>
         <slot name="html"></slot>
-        <!--<img src="../assets/1.png" class="detail_img" alt="">-->
-        <!--<p class="detail_info c-28">简介：《守卫者-浮出水面》是潘镜丞执导的当代都市谍战剧，由靳东、韩雨芹领衔主演。该剧讲述了在机密单位301研究所研发的新型深海潜水器下水实-->
-            <!--验过程中核心技术遭遇泄密后，以洪少秋...</p>-->
     </div>
 </template>
 
@@ -37,9 +33,7 @@
             background-size: 18px 18px;
         }
         .detail_img {
-            width: 100%;
-            height: auto;
-            margin: 40px 0;
+            margin: 40px auto;
             display: block;
         }
         .detail_info {

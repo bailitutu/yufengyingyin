@@ -1,17 +1,17 @@
 <template>
     <div class="sec">
         <div class="content">
-            <!--<company-info :pageInfo="companyData"></company-info>-->
+            <company-info :pageInfo="companyData"></company-info>
         </div>
     </div>
 </template>
 
 <script>
-    import normalDetail from '../../components/normalDetail'
+    import companyInfo from '../../components/companyInfo'
     export default {
         name: "about-dec-detail",
         components:{
-            normalDetail
+            companyInfo
         },
         data(){
             return {
@@ -24,7 +24,7 @@
         },
         mounted() {
             this.id = this.$route.query.id || '';
-            // this.getDetail();
+            this.getDetail();
         },
         methods: {
             //获取宣发信息
@@ -33,10 +33,13 @@
                     id: this.id
                 }, (res) => {
                     console.log(res);
-
-
-                    return;
-                    this.detail = res || {}
+                    // this.detail = res || {};
+                    this.companyData ={
+                        companyAddress : res.addr,
+                        companyName : res.title,
+                        companyPhone : res.tel,
+                        companyEmail : res.email,
+                    }
                 })
             }
 

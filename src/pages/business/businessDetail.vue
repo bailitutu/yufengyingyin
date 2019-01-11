@@ -3,8 +3,7 @@
         <div class="content" v-if="detail">
             <normal-detail :title="detail.title" :time="detail.uptime" >
                 <img :src="detail.imgs" class="detail_img" slot="img" alt="">
-                <div slot="html" class="detail_info" v-html="detail.content" >
-                </div>
+                <div slot="html" class="detail_info" v-html="detail.content" style="font-size:16px;"></div>
             </normal-detail>
         </div>
     </div>
@@ -37,7 +36,6 @@
                 this.$http.get('/Home/Api/get_agents_content', {
                     id: this.detailId
                 }, (res) => {
-                    console.log(res);
                     this.detail = res || {};
                 },(err)=>{
                     let errMsg =  err.msg ? err.msg : '该合作不存在';

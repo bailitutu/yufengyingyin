@@ -11,14 +11,11 @@
 <script>
     export default {
         name: "footer-bar",
-        created(){
-            // this.getData();
-        },
         data(){
           return {
-              copyRight:'湖南驭风者影视文化传媒有限公司',
-              infoCenter:'湘ICP证C3-09909888号',
-              recodeInfo:'湘公网安备 3204224238492829385号'
+              copyRight:'',
+              infoCenter:'',
+              recodeInfo:''
           }
         },
         created(){

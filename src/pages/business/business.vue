@@ -60,16 +60,12 @@
                 this.$http.get('/Home/Api/get_info_category',{
                     ptype:2
                 },(res)=>{
-                    console.log(res);
                     if(res.cats && res.cats.length > 0){
                         for( let i = 0;i< res.cats.length;i++){
                             this.page_sec[i].title = res.cats[i].title;
                             this.page_sec[i].id = res.cats[i].id;
                         }
                     }
-                    this.page_sec = this.page_sec.filter((item,index)=>{
-                        return index < res.cats.length;
-                    });
                 })
             }
 

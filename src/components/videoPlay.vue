@@ -16,7 +16,6 @@
         props:{
             videoType:String  ,
             videoUrl:String,
-            videoImg:String,
             showVideo: Boolean,
             closeVideo:Function
         },
@@ -48,14 +47,10 @@
         },
         watch:{
             videoType(){
-                console.log(this.videoType)
-                this.playerOptions.sources[0].type = 'video/'+ this.videoType;
+                this.playerOptions.sources[0].type = 'video/'+ this.videoType || 'video/mp4';
             },
             videoUrl(){
                 this.playerOptions.sources[0].src = 'http://www.yowind.cn'+ this.videoUrl;
-            },
-            videoImg(){
-                this.playerOptions.poster = this.videoImg || '';
             }
         },
         methods:{
@@ -69,19 +64,18 @@
 <style>
     .video-js  .vjs-big-play-button{
         position: absolute;
-        top:50%;
-        left:50%;
-        margin-left:-50px;
-        margin-top:-50px;
-        width:100px;
-        height:100px;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        border-radius: 50%;
-        font-size:1rem;
-        line-height: 1.2rem;
+        top:50%!important;
+        left:50%!important;
+        margin-left:-50px !important;
+        margin-top:-50px!important;
+        width:100px!important;
+        height:100px!important;
+        -webkit-border-radius: 50%!important;
+        -moz-border-radius: 50%!important;
+        border-radius: 50%!important;
+        font-size:1rem!important;
+        line-height: 1.2rem!important;
     }
-
 </style>
 <style lang="less" scoped>
     .videoPlayer{

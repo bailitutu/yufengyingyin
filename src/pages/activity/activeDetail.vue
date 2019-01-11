@@ -36,10 +36,8 @@
                 this.$http.get('/Home/Api/get_acts_content', {
                     id: this.detailId
                 }, (res) => {
-                    console.log(res);
                     this.detail = res || {};
                     return;
-
                 },(err)=>{
                     let errMsg =  err.msg ? err.msg : '该活动不存在';
                     alert(errMsg);
@@ -56,7 +54,6 @@
         padding:45px 0;
         .detail_info{
             font-size:18px;
-            text-align: center;
         }
     }
 </style>

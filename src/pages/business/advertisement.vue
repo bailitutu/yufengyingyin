@@ -1,20 +1,17 @@
 <template>
     <div class="sec">
         <div class="content">
-            <section-title text="广告合作"></section-title>
             <three-card :list="listInfo" detail-url="/businessDetail"></three-card>
         </div>
     </div>
 </template>
 
 <script>
-  import sectionTitle from '@/components/sectionTitle.vue'
   import threeCard from '@/components/threeCard.vue'
 
   export default {
     name: 'advertisement',
     components: {
-      sectionTitle,
       threeCard
     },
     data () {

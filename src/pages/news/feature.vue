@@ -1,7 +1,6 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="彩蛋花絮"></section-title>
             <three-col :list="listInfo"></three-col>
         </div>
     </div>

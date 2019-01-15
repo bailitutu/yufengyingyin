@@ -1,7 +1,6 @@
 <template>
     <div class="sec">
         <div class="content">
-            <section-title text="演艺演出"></section-title>
             <three-card :list="listInfo" detail-url="/businessDetail"></three-card>
         </div>
     </div>
@@ -33,7 +32,8 @@
                     perpage:9999,
                     cat_id: this.cat_id
                 },(res)=>{
-                    console.log(res)
+                    console.log('11')
+                    console.log( res)
                     this.listInfo = res.agents || [];
                     return;
                 })

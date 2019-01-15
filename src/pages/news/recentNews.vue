@@ -1,7 +1,6 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="最新动态"></section-title>
             <three-card :list="listInfo"></three-card>
         </div>
     </div>

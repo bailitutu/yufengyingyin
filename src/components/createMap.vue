@@ -5,14 +5,19 @@
 <script>
     export default {
         name: "create-map",
-        props:{
-            address:{
-                type:String,
-                default:''
-            }
-        },
+        props:['address'],
         mounted(){
             this.createMap();
+        },
+        watch:{
+            address: {
+                handler( val){
+                    this.address = val;
+                    this.createMap();
+                    return ;
+                },
+                deep:true
+            }
         },
         methods:{
             // 创建地图

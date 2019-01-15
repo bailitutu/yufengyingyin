@@ -57,9 +57,7 @@
             // 设置页面导航路径
             setPagePostion() {
                 if (this.$route.matched && this.$route.matched.length > 0) {
-                    this.pagePosition = this.$route.matched.map((cell) => {
-                        return cell.name
-                    })
+                    this.pagePosition[0] = this.$route.matched[0].name;
                 }
             },
 

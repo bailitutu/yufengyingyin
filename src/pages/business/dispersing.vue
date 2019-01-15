@@ -1,7 +1,6 @@
 <template>
     <div class="sec">
         <div class="content ">
-            <section-title text="宣发合作"></section-title>
             <div class="culture_detail" v-html="content" style="font-size:16px;">
             </div>
         </div>
@@ -9,13 +8,9 @@
 </template>
 
 <script>
-    import sectionTitle from '@/components/sectionTitle.vue'
 
     export default {
         name: "dispersing",
-        components:{
-            sectionTitle,
-        },
         data(){
             return {
                 content:''

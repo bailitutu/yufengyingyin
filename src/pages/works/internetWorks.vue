@@ -1,7 +1,6 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="网络大电影"></section-title>
             <works-list :list="listInfo"></works-list>
         </div>
     </div>

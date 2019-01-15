@@ -1,7 +1,6 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <section-title text="院线作品"></section-title>
             <works-list :list="listInfo"></works-list>
         </div>
     </div>

@@ -2,7 +2,7 @@
     <div class="normal_detail">
         <h4 class="c-28 detail_title tac">{{title}}</h4>
         <p class="c-b0 detail_time tac">{{ time }}</p>
-        <slot name="img" ></slot>
+        <slot name="img" class="main_img" ></slot>
         <slot name="text" ></slot>
         <slot name="html"></slot>
     </div>
@@ -32,8 +32,13 @@
             background: url('../assets/icon_clock.png') no-repeat left center;
             background-size: 18px 18px;
         }
+        .main_img{
+            width:1000px;
+            margin:40px auto;
+        }
         .detail_img {
             margin: 40px auto;
+            width:1000px;
             display: block;
         }
         .detail_info {

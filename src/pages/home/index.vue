@@ -2,7 +2,25 @@
     <div>
         <div class="sec banner-sec">
             <div class="img_item">
-                <img :src="bgImg | urlImg" class="w-f h-f" alt="">
+                <!--<img :src="bgImg | urlImg" class="w-f h-f" alt="">-->
+
+                <swiper :options="swiperOption" ref="mySwiper" >
+                    <!-- slides -->
+                    <swiper-slide v-for="( bgImg ,index) in bgImgs " :key="index"> <img :src="bgImg | urlImg" class="w-f h-f" alt=""></swiper-slide>
+
+                    <!--<swiper-slide> <img :src="bgImg | urlImg" class="w-f h-f" alt=""></swiper-slide>-->
+                    <!--<swiper-slide> <img :src="bgImg | urlImg" class="w-f h-f" alt=""></swiper-slide>-->
+                    <!--<swiper-slide> <img :src="bgImg | urlImg" class="w-f h-f" alt=""></swiper-slide>-->
+                    <!--<swiper-slide> <img :src="bgImg | urlImg" class="w-f h-f" alt=""></swiper-slide>-->
+                    <!--<swiper-slide> <img :src="bgImg | urlImg" class="w-f h-f" alt=""></swiper-slide>-->
+                    <!-- Optional controls -->
+                    <div class="swiper-pagination"  slot="pagination"></div>
+                    <!--<div class="swiper-button-prev" slot="button-prev"></div>-->
+                    <!--<div class="swiper-button-next" slot="button-next"></div>-->
+                    <!--<div class="swiper-scrollbar"   slot="scrollbar"></div>-->
+                </swiper>
+
+
             </div>
             <div class="content banner-content bg-white">
                 <p class="fl" v-if="pageInfo">{{pageInfo.webtel}}</p>
@@ -64,7 +82,6 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
         <div class="sec bg-white" v-if="workList && workList.length > 0">
@@ -101,15 +118,22 @@
 
 <script>
     import createMap from '../../components/createMap'
-
+    import { swiper, swiperSlide } from 'vue-awesome-swiper'
     export default {
         name: "index",
         components: {
-            createMap
+            createMap,swiper, swiperSlide
         },
         data(){
             return {
-                bgImg:'',
+                bgImgs:'',
+                swiperOption: {
+                    autoplay:true,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        currentClass:'currentSwiper'
+                    }
+                },
                 index_culture_0:'',
                 index_culture_1:'',
                 index_culture_2:'',
@@ -149,12 +173,10 @@
             getPageData(){
                 this.$http.get('/Home/Api/get_configs',{},(res)=>{
                     console.log(res);
-                    this.bgImg = res.configs.web_bg_0;
+                    this.bgImgs = res.configs.web_bg_0 || [] ;
                     this.pageInfo = res.configs || {};
                     this.playerOptions.sources[0].type = 'video/mp4';
                     this.playerOptions.sources[0].src = 'http://www.yowind.cn'+ res.configs.webvideo_url;
-                    console.log(this.playerOptions)
-                    // this.playerOptions.poster = res.videoInfo.poster;
                     return;
                 })
             },
@@ -195,7 +217,9 @@
         line-height: 1.2rem!important;
     }
 
-
+    .swiper-pagination-bullet-active{
+        background: black !important;
+    }
 </style>
 <style lang="less" scoped>
     @import "../../less/common.less";

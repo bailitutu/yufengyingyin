@@ -13,6 +13,11 @@ import Api from './api.js'
 Vue.prototype.$http = Api;
 Vue.use(VueVideoPlayer);
 
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+
+// require styles
+import 'swiper/dist/css/swiper.css'
+Vue.use(VueAwesomeSwiper)
 import myFilter from './filter'
 
 

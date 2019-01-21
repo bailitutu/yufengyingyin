@@ -13,7 +13,7 @@
                     <p><span>体重：</span> {{ actorDetail.weight}} kg</p>
                     <p><span>籍贯：</span> {{ actorDetail.place}}</p>
                     <p><span>毕业院校：</span> {{ actorDetail.school}}</p>
-                    <p><span>经济公司：</span> {{ actorDetail.company}}</p>
+                    <p><span class="fl">简介：</span> <i class=" fr" style="">{{ actorDetail.company}} </i></p>
                 </div>
 
             </div>
@@ -66,13 +66,14 @@
         padding: 45px 0;
         .actor_info{
             width: 100%;
-            height: 500px;
+            min-height: 500px;
             padding:27px 40px;
+            overflow: hidden;
             box-shadow:0px 0px 4px 0px rgba(0,0,0,0.2);
             .actor_img_item{
                 float: left;
                 width: 360px;
-                height: 100%;
+                height: 446px;
                 text-align: center;
                 position: relative;
                 &:before{
@@ -109,7 +110,7 @@
             .actor_info_cell{
                 float: left;
                 margin-left: 90px;
-                width: 500px;
+                width: 700px;
                 height: 100%;
                 color: @c-28;
                 h2{
@@ -119,9 +120,14 @@
                 p{
                     font-size:18px;
                     margin-top:24px;
+                    line-height: 26px;
                     span{
                         display: inline-block;
                         min-width:100px;
+                    }
+                    i{
+                        font-style:normal;
+                        width: 600px;
                     }
                 }
 

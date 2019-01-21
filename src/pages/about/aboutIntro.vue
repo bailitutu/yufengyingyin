@@ -6,9 +6,9 @@
                 <div class="intro_item">
                     <div class="intro_left fl" v-html="companyInfo.content">
                     </div>
-                    <div class="intro_right fl">
-                        <img :src="companyInfo.imgs" class="w-f h-f" alt="">
-                    </div>
+                    <!--<div class="intro_right fl">-->
+                        <!--<img :src="companyInfo.imgs" class="w-f h-f" alt="">-->
+                    <!--</div>-->
                 </div>
 
             </div>
@@ -124,7 +124,7 @@
                 overflow: hidden;
                 width: 100%;
                 .intro_left {
-                    width: 770px;
+                    width: 100%;
                     font-size:18px;
                     >p {
                         font-size: 18px;

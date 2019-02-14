@@ -1,7 +1,7 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <works-list :list="listInfo"></works-list>
+            <works-list :list="listInfo" :is-end="isEnd"></works-list>
         </div>
     </div>
 </template>
@@ -18,7 +18,8 @@
         },
         data(){
             return {
-                listInfo:[]
+                listInfo:[],
+                isEnd:false
             }
         },
         mounted(){
@@ -35,6 +36,7 @@
                 },(res)=>{
                     console.log(res)
                     this.listInfo = res.goods || [];
+                    this.isEnd = true
                 })
             }
         }

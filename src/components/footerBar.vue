@@ -34,8 +34,7 @@
 </script>
 
 <style lang="less" scoped>
-@import "../less/common.less";
-
+    @import "../less/common.less";
     .sec{
         background: @bg-black;
         .content{

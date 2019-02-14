@@ -2,7 +2,7 @@
     <div class="sec bg-white">
         <div class="content" >
             <section-title text="宣发体系"></section-title>
-            <three-card :list="listInfo" detail-url="/aboutDecDetail"></three-card>
+            <three-card :list="listInfo" detail-url="/aboutDecDetail" :is-end="isEnd"></three-card>
         </div>
     </div>
 </template>
@@ -19,7 +19,8 @@
         },
         data(){
             return {
-                listInfo:[]
+                listInfo:[],
+                isEnd:false
             }
         },
         mounted(){
@@ -32,8 +33,8 @@
                     page:1,
                     perpage:9999
                 },(res)=>{
-                    console.log(res)
-                    this.listInfo = res.partners || []
+                    this.listInfo = res.partners || [];
+                    this.isEnd = true;
                 })
             }
         }

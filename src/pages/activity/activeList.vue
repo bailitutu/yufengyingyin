@@ -1,7 +1,7 @@
 <template>
     <div class="sec  bg-white">
         <div class="content active_content">
-            <three-card :list="listInfo" detail-url="/activeDetail"></three-card>
+            <three-card :list="listInfo" detail-url="/activeDetail" :is-end="isEnd"></three-card>
         </div>
     </div>
 </template>
@@ -16,7 +16,8 @@
         },
         data(){
             return {
-                listInfo:[]
+                listInfo:[],
+                isEnd:false
             }
         },
         mounted(){
@@ -25,7 +26,8 @@
         methods:{
             getData(){
                 this.$http.get('/Home/Api/get_acts_lists',{},(res)=>{
-                    this.listInfo = res.acts || []
+                    this.listInfo = res.acts || [];
+                    this.isEnd = true
                 })
             }
         }

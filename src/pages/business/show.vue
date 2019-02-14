@@ -1,7 +1,7 @@
 <template>
     <div class="sec">
         <div class="content">
-            <three-card :list="listInfo" detail-url="/businessDetail"></three-card>
+            <three-card :list="listInfo" detail-url="/businessDetail" :is-end="isEnd"></three-card>
         </div>
     </div>
 </template>
@@ -17,7 +17,8 @@
         },
         data(){
             return {
-                listInfo:[]
+                listInfo:[],
+                isEnd:false
             }
         },
         mounted(){
@@ -32,9 +33,8 @@
                     perpage:9999,
                     cat_id: this.cat_id
                 },(res)=>{
-                    console.log('11')
-                    console.log( res)
                     this.listInfo = res.agents || [];
+                    this.isEnd = true;
                     return;
                 })
             }

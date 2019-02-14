@@ -18,7 +18,7 @@
                 <img :src="works.imgs | urlImg"  class="w-f h-f"  alt="">
             </li>
         </ul>
-        <blank-page v-if="list.length === 0 "></blank-page>
+        <blank-page v-if="list.length === 0 && isEnd"></blank-page>
     </div>
 </template>
 
@@ -34,6 +34,10 @@
             list:{
                 type:Array,
                 default:[]
+            },
+            isEnd:{
+                type:Boolean,
+                default:false
             }
         },
         data(){
@@ -65,7 +69,6 @@
     }
 </script>
 <style lang="less" scoped>
-    @import "../less/common.less";
     .works_item {
         width: 100%;
         margin-top: 30px;

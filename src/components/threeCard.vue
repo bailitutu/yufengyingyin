@@ -6,7 +6,7 @@
                 <p class="c-28 one_raw">{{item.title}}</p>
             </li>
         </ul>
-        <blank-page v-if="list.length === 0 "></blank-page>
+        <blank-page v-if="list.length === 0 && isEnd"></blank-page>
     </div>
 
 </template>
@@ -27,6 +27,10 @@
             list:{
                 type:Array,
                 default: []
+            },
+            isEnd:{
+                type:Boolean,
+                default:false
             }
         },
         methods:{
@@ -40,7 +44,6 @@
 
 <style lang="less" scoped>
     @import "../less/common.less";
-
     .normal_list {
         width: 100%;
         font-size: 0;

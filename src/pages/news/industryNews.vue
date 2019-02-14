@@ -1,7 +1,7 @@
 <template>
     <div class="sec bg-white">
         <div class="content" >
-            <three-card :list="listInfo"></three-card>
+            <three-card :list="listInfo" :is-end="isEnd"></three-card>
         </div>
     </div>
 </template>
@@ -17,7 +17,8 @@
         },
         data(){
             return {
-                listInfo:[]
+                listInfo:[],
+                isEnd:false
             }
         },
         mounted(){
@@ -32,8 +33,8 @@
                     page:1,
                     perpage:9999
                 },(res)=>{
-                    console.log(res)
                     this.listInfo = res.news || [];
+                    this.isEnd = true;
                     return;
                 })
             }

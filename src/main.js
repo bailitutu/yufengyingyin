@@ -19,8 +19,6 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper)
 import myFilter from './filter'
-
-
 for (let key in myFilter) {
     Vue.filter(key, myFilter[key])
 }

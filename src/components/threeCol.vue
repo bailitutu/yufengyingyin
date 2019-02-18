@@ -2,7 +2,7 @@
     <div>
         <ul class="show_list" v-if="list.length > 0">
             <li v-for="(item,index) in list" :key="index" @click.stop="playVideo(item)">
-                <img :src="item.imgs | urlImg " alt="">
+                <img v-lazy="item.imgs" alt="">
                 <p class="one_raw c-28">{{item.title}}</p>
             </li>
         </ul>

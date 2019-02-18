@@ -22,6 +22,15 @@ import myFilter from './filter'
 for (let key in myFilter) {
     Vue.filter(key, myFilter[key])
 }
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload,{
+    filter: {
+        filterImg(listener, options){
+            listener.src = 'http://www.yowind.cn'+ listener.src;
+        }
+    }
+})
 
 
 Vue.config.productionTip = false;

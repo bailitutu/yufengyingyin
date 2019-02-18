@@ -2,7 +2,7 @@
     <div>
         <ul class="normal_list">
             <li @click.stop="checkDetail(item.id)" v-for="(item,index) in list" :key="index">
-                <img :src="item.imgs | urlImg" class="w-f" alt="">
+                <img v-lazy="item.imgs"  class="w-f" alt="">
                 <p class="c-28 one_raw">{{item.title}}</p>
             </li>
         </ul>

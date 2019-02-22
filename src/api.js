@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 let http = axios.create({
-    // baseURL: 'http://mock.eolinker.com/CtL6GkGc7aeee69424a667b935ac3c1044573a33a4a44f2?uri=',
-    baseURL: 'http://www.yowind.cn/index.php',
+    baseURL: 'http://mock.eolinker.com/CtL6GkGc7aeee69424a667b935ac3c1044573a33a4a44f2?uri=',
     withCredentials: false,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
